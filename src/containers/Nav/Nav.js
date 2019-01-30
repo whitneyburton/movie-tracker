@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { setFilter, setMovies } from '../../actions';
 import { connect } from 'react-redux';
 import apiKey from '../../API_KEY/movie_api_key';
-import './Nav.scss'
-import Button from '../Button/Button'
+import './Nav.scss';
+import Button from '../Button/Button';
 
 
 
@@ -14,8 +14,7 @@ const Nav = (props) => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
     const movies = await response.json();
     await props.setMovies(movies);
-    return movies;
-  }
+  };
 
   return (
     <nav className='Nav'>
@@ -25,17 +24,17 @@ const Nav = (props) => {
       <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
       <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
 
-    </nav>)
+    </nav>);
 
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   setFilter: (text) => dispatch(setFilter(text)),
   setMovies: (movies) => dispatch(setMovies(movies)),
-})
+});
 
 const mapStateToProps = (state) => ({
   movies: state.movies
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
