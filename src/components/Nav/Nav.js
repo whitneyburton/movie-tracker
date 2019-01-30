@@ -7,7 +7,7 @@ import apiKey from '../../API_KEY/movie_api_key'
 
 
 const Nav = (props) => {
-  let movies;
+  
   const fetchMovies = async () => {
       const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
       const movies = await response.json();
