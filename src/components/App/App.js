@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { Route, NavLink } from 'react-router-dom';
-import Nav from '../Nav/Nav'
+import Home from '../Home/Home'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+        <Home />
       </div>
     );
   }
