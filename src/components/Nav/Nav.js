@@ -7,15 +7,16 @@ import apiKey from '../../API_KEY/movie_api_key'
 
 
 const Nav = (props) => {
-  
+  let movies;
   const fetchMovies = async () => {
       const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
       const movies = await response.json();
       console.log('winning',movies)
-      await props.setMovies(movies)
+    await props.setMovies(movies)
+    return movies
   }
 
-  return < div onClick={fetchMovies}> Test</div >
+  return < div onClick={fetchMovies}>{`${JSON.stringify(props.movies)}`} Test</div >
     /* <nav>
       <NavLink to='/recent'  name='recent'>Test {props.movies}</NavLink>
       <NavLink to='/popular' name='popular' onClick={(e) => {
