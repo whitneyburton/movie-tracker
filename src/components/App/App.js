@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import {Route, NavLink} from 'react-router-dom';
 const Card = <div>Yeup</div>
 
