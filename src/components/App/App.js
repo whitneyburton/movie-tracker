@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import './App.scss';
-import {Route, NavLink} from 'react-router-dom';
-const Card = <div>Yeup</div>
+import { Route, NavLink } from 'react-router-dom';
+import Nav from '../Nav/Nav'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>
-          <NavLink to='/recent' component={Card}>Recent Movies</NavLink>
-          <NavLink to='/favorites' component={Card}>Favorite Movies</NavLink>
-          <NavLink to='/popular' component={Card}>Popular Movies</NavLink>
-        </nav>
+        <Nav />
       </div>
     );
   }
