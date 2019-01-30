@@ -6,8 +6,6 @@ import apiKey from '../../API_KEY/movie_api_key';
 import './Nav.scss'
 import Button from '../Button/Button'
 
-
-
 const Nav = (props) => {
 
   const fetchMovies = async () => {
@@ -19,7 +17,7 @@ const Nav = (props) => {
 
   return (
     <nav className='Nav'>
-      < button onClick={fetchMovies}> Click Me and check Redux State</button >
+      <button onClick={fetchMovies}> Click Me and check Redux State</button >
 
       <NavLink to='/recent' name='recent'>Recent</NavLink>
       <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
