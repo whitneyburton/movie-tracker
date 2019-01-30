@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { setFilter, setMovies } from '../../actions';
 import { connect } from 'react-redux';
 import apiKey from '../../API_KEY/movie_api_key';
+import './Nav.scss'
 import Button from '../Button/Button'
 
 
@@ -17,14 +18,14 @@ const Nav = (props) => {
   }
 
   return (
-    <Fragment>
-      < div onClick={fetchMovies}>{JSON.stringify(props.movies)} Test</div >
-      <nav>
-        <NavLink to='/recent' name='recent'>Recent</NavLink>
-        <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
-        <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
-      </nav>
-    </Fragment>)
+    <nav className='Nav'>
+      < button onClick={fetchMovies}> Click Me and check Redux State</button >
+
+      <NavLink to='/recent' name='recent'>Recent</NavLink>
+      <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
+      <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
+
+    </nav>)
 
 }
 

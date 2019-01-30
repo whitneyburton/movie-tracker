@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import Nav from '../../containers/Nav/Nav'
 import View from '../../containers/View/View'
-
+import './Home.scss'
 
 const Home = () => {
   return (
-    <Fragment >
+    <div className='Home' >
       <Nav />
       <View />
-    </Fragment >
+    </div >
   )
 }
 export default Home;

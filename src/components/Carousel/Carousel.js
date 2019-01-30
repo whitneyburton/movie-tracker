@@ -1,7 +1,11 @@
 import React from 'react';
-
-const Carousel = () => {
-  return <h1>A Carousel</h1>
+import { connect } from 'react-redux';
+import './Carousel.scss';
+const Carousel = (props) => {
+  return <h1>{JSON.stringify(props.movies)}</h1>
 } 
 
-export default Carousel;
+const mapStateToProps = (state) => ({
+  movies:state.movies
+})
+export default connect(mapStateToProps)(Carousel);
