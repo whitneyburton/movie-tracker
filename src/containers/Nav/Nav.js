@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { setFilter, setMovies } from '../../actions';
 import { connect } from 'react-redux';
 import apiKey from '../../API_KEY/movie_api_key';
-import View from '../View/View'
+import Button from '../Button/Button'
 
 
 
@@ -12,9 +12,8 @@ const Nav = (props) => {
   const fetchMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
     const movies = await response.json();
-    console.log('winning', movies)
-    await props.setMovies(movies)
-    return movies
+    await props.setMovies(movies);
+    return movies;
   }
 
   return (
@@ -25,7 +24,6 @@ const Nav = (props) => {
         <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
         <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
       </nav>
-      <View/>
     </Fragment>)
 
 }
