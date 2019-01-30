@@ -1,3 +1,5 @@
+// Movie key
+
 export const setFilter = (filter) => ({
     type: 'SET_FILTER',
     filter,
@@ -13,3 +15,11 @@ export const setMovies = (movies) => ({
   movies,
 })
 
+// Login key 
+
+export const addUser = (name, password, email) => ({
+    type: 'ADD_USER',
+    name,
+    password,
+    email,
+})

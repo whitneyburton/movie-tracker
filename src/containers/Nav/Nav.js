@@ -4,7 +4,6 @@ import { setFilter, setMovies } from '../../actions';
 import { connect } from 'react-redux';
 import apiKey from '../../API_KEY/movie_api_key';
 import './Nav.scss'
-import Button from '../Button/Button'
 
 const Nav = (props) => {
 
@@ -27,13 +26,13 @@ const Nav = (props) => {
 
 }
 
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
 const mapDispatchToProps = (dispatch) => ({
   setFilter: (text) => dispatch(setFilter(text)),
   setMovies: (movies) => dispatch(setMovies(movies)),
-})
-
-const mapStateToProps = (state) => ({
-  movies: state.movies
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
