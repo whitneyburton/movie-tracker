@@ -8,7 +8,8 @@ export const toggleFavorite = (id)=>({
     id,
 })
 
-export const fetchMovies = () => ({
-    type: 'FETCH_MOVIES',
+export const setMovies = (movies) => ({
+  type: 'SET_MOVIES',
+  movies,
 })
 

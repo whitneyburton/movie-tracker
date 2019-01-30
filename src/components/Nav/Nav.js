@@ -1,13 +1,21 @@
 import React, { Fragment } from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import { setFilter, fetchMovies } from '../../actions';
+import { setFilter, setMovies } from '../../actions';
 import { connect } from 'react-redux';
+import apiKey from '../../API_KEY/movie_api_key'
 
-const Home = () => <div>Haaaay</div>
 
-const Nav = (props) => (
 
-    <div onClick={props.fetchMovies}>Test</div>
+const Nav = (props) => {
+  
+  const fetchMovies = async () => {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
+      const movies = await response.json();
+      console.log('winning',movies)
+      await props.setMovies(movies)
+  }
+
+  return < div onClick={fetchMovies}> Test</div >
     /* <nav>
       <NavLink to='/recent'  name='recent'>Test {props.movies}</NavLink>
       <NavLink to='/popular' name='popular' onClick={(e) => {
@@ -22,11 +30,11 @@ const Nav = (props) => (
   
     /* <Route path='/recent' component={Home} /> */
 
-)
+    }
 
 const mapDispatchToProps = (dispatch) => ({
   setFilter: (text) => dispatch(setFilter(text)),
-  fetchMovies: () => dispatch(fetchMovies()),
+  setMovies: (movies) => dispatch(setMovies(movies)),
 })
 
 const mapStateToProps = (state) => ({
