@@ -23,3 +23,8 @@ export const addUser = (name, password, email) => ({
     password,
     email,
 })
+
+export const setUsers = (users) => ({
+    type: 'SET_USERS',
+    users,
+})
