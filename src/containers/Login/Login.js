@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUsers } from '../../actions/'
+import { fetchData } from '../../api/api'
 
 class Login extends Component {
 
   async componentDidMount() {
-    const res = await fetch('http://localhost:3000/api/users')
-    const result = await res.json()
+    const result = await fetchData('http://localhost:3000/api/users')
     this.props.setUsers(result.data)
   }
   
