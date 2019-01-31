@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { postData } from '../../api/api'
+import './CreateUser.scss'
 
 class CreateUser extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class CreateUser extends Component {
       didPost ?
         <Redirect to='/' />
         :
-        <form>
+        <form className='CreateUser'>
           <input required onChange={this.handleChange} name='name' />
           <input required onChange={this.handleChange} name='password' />
           <input required onChange={this.handleChange} name='email' />
