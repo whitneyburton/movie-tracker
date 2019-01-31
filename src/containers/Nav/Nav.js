@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import './Nav.scss'
 
 const Nav = () => {
-
   return (
     <nav className='Nav'>
       <NavLink to='/recent' name='recent'>Recent</NavLink>

@@ -1,14 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './Carousel.scss';
-
+import React from 'react'
+import Movie from '../../containers/Movie/Movie'
+import { connect } from 'react-redux'
+import './Carousel.scss'
 
 const Carousel = (props) => {
-  return <h1>{JSON.stringify(props.movies)}</h1>
+  const movies = props.movies.map(movie => (
+    <Movie movie={movie} />
+  ))
+  return movies
 } 
 
 const mapStateToProps = (state) => ({
-  movies:state.movies
+  movies: state.movies
 })
 
-export default connect(mapStateToProps)(Carousel);
+export default connect(mapStateToProps)(Carousel)

@@ -11,7 +11,7 @@ import CreateUser from '../../containers/CreateUser/CreateUser'
 class App extends Component {
   
   fetchMovies = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`)
+    const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing${apiKey}`)
     const unfilteredMovies = await response.json()
     const movies = unfilteredMovies.results
     await this.props.setMovies(movies)
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route path='/' component={Home} />
           <Route path='/login' component={Login} />
           <Route path='/createUser' component={CreateUser} />
         </Switch>

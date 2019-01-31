@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
-import Carousel from '../../components/Carousel/Carousel';
-import { Route } from 'react-router-dom';
+import React from 'react'
+import Carousel from '../../components/Carousel/Carousel'
+import { Route } from 'react-router-dom'
 import './View.scss'
 
 export default () => {
