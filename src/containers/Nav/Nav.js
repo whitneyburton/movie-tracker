@@ -1,39 +1,29 @@
-import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import { setFilter, setMovies } from '../../actions';
-import { connect } from 'react-redux';
-import apiKey from '../../API_KEY/movie_api_key';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+// import { setFilter } from '../../actions'
+// import { connect } from 'react-redux'
 import './Nav.scss'
 
-const Nav = (props) => {
-
-  const fetchMovies = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
-    const unfilteredMovies = await response.json();
-    const movies = unfilteredMovies.results
-    await props.setMovies(movies);
-    return movies;
-  }
+const Nav = () => {
 
   return (
     <nav className='Nav'>
-      <button onClick={fetchMovies}> Click Me and check Redux State</button >
-
       <NavLink to='/recent' name='recent'>Recent</NavLink>
       <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
       <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
-
-    </nav>)
-
+    </nav>
+  )
 }
 
-const mapStateToProps = (state) => ({
-  movies: state.movies
-})
+// const mapStateToProps = (state) => ({
+//   movies: state.movies
+// })
 
-const mapDispatchToProps = (dispatch) => ({
-  setFilter: (text) => dispatch(setFilter(text)),
-  setMovies: (movies) => dispatch(setMovies(movies)),
-})
+// const mapDispatchToProps = (dispatch) => ({
+  // setFilter: (text) => dispatch(setFilter(text)),
+  // setMovies: (movies) => dispatch(setMovies(movies)),
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+// export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+
+export default Nav

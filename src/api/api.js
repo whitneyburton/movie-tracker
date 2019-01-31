@@ -1,8 +1,18 @@
 // const url = 'http://localhost:3000/api/'
 const url = 'https://falsemotive.io/api/'
 
-export const postData = async (options = '', user) => {
-  const response = await fetch(`${url}${options}`, {
+// const options 
+
+/*
+//some component file
+fetchData(path,options)
+
+//in api
+fetchData()
+*/
+
+export const postData = async (path = '', user) => {
+  const response = await fetch(`${url}${path}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,11 +24,13 @@ export const postData = async (options = '', user) => {
     return response;
   } else {
     throw new Error(`Error posting data: ${response.status}`);
+    // pass response.status and response.message 
+    // and make a user friendly error message with EMOJIS 
   }
 }
 
-export const fetchData = async (options) => {
-  const response = await fetch(`${url}${options}`)
+export const fetchData = async (path) => {
+  const response = await fetch(`${url}${path}`)
   if (response.ok) {
     return await response.json()
   } else {

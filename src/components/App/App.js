@@ -1,26 +1,45 @@
-import React, { Component } from 'react';
-import './App.scss';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import './App.scss'
+import { Route, Switch, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setMovies } from '../../actions'
+import apiKey from '../../API_KEY/movie_api_key'
 import Login from '../../containers/Login/Login'
 import Home from '../Home/Home'
-import CreateUser from '../../containers/CreateUser/CreateUser';
+import CreateUser from '../../containers/CreateUser/CreateUser'
 
 class App extends Component {
+  
+  fetchMovies = async () => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`)
+    const unfilteredMovies = await response.json()
+    const movies = unfilteredMovies.results
+    await this.props.setMovies(movies)
+    return movies
+  }
+
+  componentDidMount = async () => {
+    await this.fetchMovies()
+  }
 
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/' component={Home} />
+          <Route path='/login' component={Login} />
           <Route path='/createUser' component={CreateUser} />
-          <Route path='/home' component={Home} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(App);
+const mapDispatchToProps = (dispatch) => ({
+  setMovies: (movies) => dispatch(setMovies(movies)),
+})
+
+export default withRouter(connect(null, mapDispatchToProps)(App))
 
 // to get all users :'/users',
 // to sign in: '/users' // must have a body with email and password
