@@ -2,7 +2,7 @@ import * as actions from './index'
 
 describe('actions', () => {
   const movies = [
-    { name: 'title' },
+    { 'title': "Aquaman",  },
     { name: 'title1' }
   ]
   const user = {
@@ -24,7 +24,7 @@ describe('actions', () => {
       const expected = { type: 'TOGGLE_FAVORITE', id: 1 }
       const result = actions.toggleFavorite(1)
       expect(result).toEqual(expected)
-    })
+    }) 
   })
 
   describe('setMovies', () => {
