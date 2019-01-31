@@ -1,4 +1,6 @@
-export const moviesReducer = (state = [], action) => {
+const defaultState = []
+
+export const moviesReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'TOGGLE_FAVORITE':
       const newState = [...state];
@@ -10,8 +12,7 @@ export const moviesReducer = (state = [], action) => {
         }
       })
     case 'SET_MOVIES':
-      return action.movies.results;
-
-    default: return state;
+      return action.movies
+    default: return state
   }
 }

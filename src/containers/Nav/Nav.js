@@ -9,7 +9,8 @@ const Nav = (props) => {
 
   const fetchMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming${apiKey}`);
-    const movies = await response.json();
+    const unfilteredMovies = await response.json();
+    const movies = unfilteredMovies.results
     await props.setMovies(movies);
     return movies;
   }
