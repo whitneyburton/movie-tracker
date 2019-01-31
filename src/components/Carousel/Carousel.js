@@ -7,7 +7,7 @@ const Carousel = (props) => {
   const movies = props.movies.map(movie => (
     <Movie movie={movie} />
   ))
-  return movies
+  return <div className='Carousel'>{movies}</div>
 } 
 
 const mapStateToProps = (state) => ({

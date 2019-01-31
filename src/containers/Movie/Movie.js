@@ -7,7 +7,11 @@ const Movie = ({movie}) => {
     <div className='Movie'>
       <h1 className='movie-title'>{movie.title}</h1>
       <p className='movie-title'>{movie.release_date}</p>
-      <img src={imgUrl + movie.poster_path} alt='movie poster'></img>
+      <img
+        src={imgUrl + movie.poster_path}
+        className='movie-poster'
+        alt='movie poster'></img>
+      <button className='favorite-btn'>Add To Favorites</button>
     </div>
   )
 }
