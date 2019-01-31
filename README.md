@@ -1,6 +1,6 @@
 # The Best Movies
 
-### Issues tracked with Waffl.io:
+### Issues tracked with Waffle.io:
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/JustinD85/The_Best_Movies.svg?columns=all)](https://waffle.io/JustinD85/The_Best_Movies)
 
 ## WireFrames
