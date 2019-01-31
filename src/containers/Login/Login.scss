@@ -1,0 +1,51 @@
+.Login{
+  display:grid;
+  height:100%;
+  grid-template-areas:
+    ". title ."
+      "login login login"
+      ". . create-user";
+  h1{
+    align-self:center;
+    grid-area: title;
+    font-size:4rem;
+    color: #0CD0FC;
+  }
+
+  .Profile{
+    grid-area:login;
+    width:100vw;
+    display:flex;
+    justify-content:space-around;
+    .profile-icon{
+      background: #DC8873;
+      width:20%;
+      height:100%;
+      border-radius:25px;
+      text-decoration:none;
+      display:grid;
+      justify-content:center;
+      align-items:center;
+      max-width:200px;
+      max-height:200px;
+    }
+
+  }
+
+  .CreateUserButton{
+    grid-area:create-user;
+  }
+
+  .CreateUserButton,
+  {
+    height:50%;
+    width:50%;
+    background: #95878B;
+    border-radius:25px;
+    display:grid;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none
+  }
+
+}

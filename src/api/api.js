@@ -1,6 +1,7 @@
-export const postData = async function (url, user) {
-
-  const response = await fetch(`http://localhost:3000/api/${url}`, {
+export const postData = async function (option, user) {
+  const url = 'https://falsemotive.io/api/';
+  //const urlLocal = `http://localhost:3000/api/`
+  const response = await fetch(`${url}${option}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
