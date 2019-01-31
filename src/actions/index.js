@@ -15,7 +15,7 @@ export const setMovies = (movies) => ({
   movies,
 })
 
-// Login key 
+// Users key 
 
 export const addUser = (name, password, email) => ({
     type: 'ADD_USER',

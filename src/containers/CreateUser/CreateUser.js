@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
-import {addUser} from '../../actions'
+import { Redirect } from 'react-router-dom'
+import { postData } from '../../api/api'
 
-
-class CreateUser extends Component{
+class CreateUser extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
       email: '',
-      password:'',
+      password: '',
+      didPost: false,
+      error: ''
     }
   }
 
@@ -18,29 +18,41 @@ class CreateUser extends Component{
     const { name, value } = e.target;
 
     this.setState({
-      [name]:value,
+      [name]: value,
     })
   }
 
-  handleSubmit = async () => {
-   var response= await fetch('http://localhost:3000/api/users/new', {
-      method: 'POST',
-      headers: {
-        'Content-Type':'application/json',
-      },
-      body:JSON.stringify(this.state)
-   })
-    console.log(response)
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, password } = this.state;
+    const user = { name, email, password };
+
+    try {
+      await postData('users/new', user)
+      this.setState({
+        didPost: true
+      })
+    } catch (error) {
+      this.setState({
+        error: error.message
+      })
+    }
   }
 
   render() {
-   
-    return (<form>
-      <input required onChange={this.handleChange} name='name'/>
-      <input required onChange={this.handleChange} name='password'/>
-      <input required onChange={this.handleChange} name='email' />
-      <NavLink onClick={this.handleSubmit} to='/'>Submit</NavLink>
-    </form>
+    const { didPost, error } = this.state
+    return (
+      didPost ?
+        <Redirect to='/' />
+        :
+        <form>
+          <input required onChange={this.handleChange} name='name' />
+          <input required onChange={this.handleChange} name='password' />
+          <input required onChange={this.handleChange} name='email' />
+          <button type='submit' onClick={this.handleSubmit}>Submit</button>
+          {error && <h3>{error}</h3>}
+        </form>
+
     )
   }
 }
