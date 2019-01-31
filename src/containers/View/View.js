@@ -6,6 +6,6 @@ import './View.scss'
 export default () => {
   return (
     <div className='View'>
-      <Route path='/recent' component={Carousel} />
+      <Route path='/' component={Carousel} />
     </div>)
 }

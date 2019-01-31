@@ -7,7 +7,7 @@ import './Nav.scss'
 const Nav = () => {
   return (
     <nav className='Nav'>
-      <NavLink to='/recent' name='recent'>Recent</NavLink>
+      <NavLink to='/' name='recent'>Recent</NavLink>
       <NavLink to='/popular' name='popular'>Popular Movies</NavLink>
       <NavLink to='/favorites' name='favorites'>Favorite Movies</NavLink>
     </nav>

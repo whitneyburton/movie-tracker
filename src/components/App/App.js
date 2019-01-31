@@ -15,7 +15,7 @@ class App extends Component {
     const unfilteredMovies = await response.json()
     const movies = unfilteredMovies.results
     await this.props.setMovies(movies)
-    return movies
+    return movies 
   }
 
   componentDidMount = async () => {
