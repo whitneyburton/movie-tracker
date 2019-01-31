@@ -51,7 +51,7 @@ class CreateUser extends Component {
           <input required onChange={this.handleChange} name='password' />
           <input required onChange={this.handleChange} name='email' />
           <button type='submit' onClick={this.handleSubmit}>Submit</button>
-          {error && <h3>{error}</h3>}
+          {error && <h3>Please enter a name, email, and password.</h3>}
         </form>
 
     )
