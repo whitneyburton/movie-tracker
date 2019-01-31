@@ -1,13 +1,27 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Login = () => {
+const Login = (props) => {
+  const users = props.users.map(user => {
+    return <NavLink to='/home' name='user1'>{user.name}</NavLink>
+  })
+
   return (
-    <Fragment>
+    <div className='Login'>
       <h1>Login Component</h1>
-      <NavLink to='/home' name='user1'>User1</NavLink>
-    </Fragment>
+      {users}
+      <NavLink to='/createUser'> CreateUser </NavLink>
+    </div>
   )
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  users: state.users,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

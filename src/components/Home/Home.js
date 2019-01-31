@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react'
 import Nav from '../../containers/Nav/Nav'
 import View from '../../containers/View/View'
 import './Home.scss'
@@ -11,4 +11,5 @@ const Home = () => {
     </div >
   )
 }
+
 export default Home;
