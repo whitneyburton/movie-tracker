@@ -1,7 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import { App } from './App'
+import { shallow } from 'enzyme'
 
-it('renders without crashing', () => {
-  
-});
+describe('App', () => {
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = shallow(<App />)
+  })
+
+  it('should match the snapshot', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  // describe('fetchMovies', () => {
+  //   it('should call ', () =>)
+  // })
+
+})

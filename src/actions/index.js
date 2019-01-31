@@ -5,7 +5,7 @@ export const setFilter = (filter) => ({
     filter,
 })
 
-export const toggleFavorite = (id)=>({
+export const toggleFavorite = (id) => ({
     type:'TOGGLE_FAVORITE',
     id,
 })
@@ -22,9 +22,4 @@ export const addUser = (name, password, email) => ({
     name,
     password,
     email,
-})
-
-export const setUsers = (users) => ({
-    type: 'SET_USERS',
-    users,
 })

@@ -8,14 +8,13 @@ import Login from '../../containers/Login/Login'
 import Home from '../Home/Home'
 import CreateUser from '../../containers/CreateUser/CreateUser'
 
-class App extends Component {
+export class App extends Component {
   
   fetchMovies = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing${apiKey}`)
     const unfilteredMovies = await response.json()
     const movies = unfilteredMovies.results
     await this.props.setMovies(movies)
-    return movies 
   }
 
   componentDidMount = async () => {
@@ -35,7 +34,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
 })
 
