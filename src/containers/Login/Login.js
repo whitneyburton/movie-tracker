@@ -20,7 +20,8 @@ class Login extends Component {
         <input/>
         <p>Email</p>
         <input/>
-        <NavLink className='CreateUserButton' to='/create-user'> CreateUser </NavLink>
+        <NavLink className='sign-in link' to='/'/>
+        <NavLink className='create-user link' to='/create-user'> CreateUser </NavLink>
       </div> 
     )
   }
