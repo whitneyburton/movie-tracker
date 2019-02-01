@@ -44,16 +44,33 @@ class CreateUser extends Component {
     const { didPost, error } = this.state
     return (
       didPost ?
-        <Redirect to='/' />
-        :
+        <Redirect to='/' /> :
         <form className='CreateUser'>
-          <input required type='text' onChange={this.handleChange} name='name' />
-          <input required type='password' onChange={this.handleChange} name='password' />
-          <input required type='email' onChange={this.handleChange} name='email' />
-          <button type='submit' onSubmit={this.handleSubmit}>Submit</button>
+          <input
+            className='user-input'
+            placeholder='Name'
+            required type='text'
+            onChange={this.handleChange}
+            name='name' />
+          <input
+            className='user-input'
+            placeholder='Email'
+            required type='email'
+            onChange={this.handleChange}
+            name='email' />
+          <input
+            className='user-input'
+            placeholder='Password'
+            required type='password'
+            onChange={this.handleChange}
+            name='password' />
+          <button
+            className='submit-user'
+            type='submit'
+            onSubmit={this.handleSubmit}>Submit
+            </button>
           {error && <h3>{error}</h3>}
         </form>
-
     )
   }
 }

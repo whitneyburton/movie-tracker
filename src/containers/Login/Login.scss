@@ -1,25 +1,35 @@
-.Login{
+.Login {
   height:100%;
-  h1{
+
+  p, h3 {
+    color: whitesmoke;
+  }
+
+  h1 {
+    color: whitesmoke;
     align-self:center;
     grid-area: title;
     font-size:4rem;
     color: #0CD0FC;
   }
 
-
-
-
-  .link,
-  {
-    height:50%;
+  .link {
+    // height:50%;
+    margin: 10px auto;
     width:50%;
-    background: #95878B;
+    background: whitesmoke;
     border-radius:25px;
     display:grid;
     justify-content:center;
     align-items:center;
     text-decoration:none
+  }
+
+  .user-input {
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 6px;
+    margin: 10px;
   }
 
 }
