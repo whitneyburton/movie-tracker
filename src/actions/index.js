@@ -17,8 +17,8 @@ export const setMovies = (movies) => ({
 
 // Users key 
 
-export const setUser = (name, id) => ({
+export const setUser = (user) => ({
     type: 'SET_USER',
-    name,
-    id,
+    user
 })
+

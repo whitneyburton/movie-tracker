@@ -41,7 +41,8 @@ class Login extends Component {
       error:'That email or password does not exist'
   })
   }
-    this.props.setUser(userResult.data.name, userResult.data.id)
+    const{name,id}=userResult.data
+    this.props.setUser({name,id})
   }
 
   render() {
@@ -76,7 +77,7 @@ class Login extends Component {
 }
 
 export const mapDispatchToProps = (dispatch)=>({
-  setUser:(name, id)=> dispatch(setUser(name,id)),
+  setUser:(user)=> dispatch(setUser(user)),
 })
 
 export default connect(null,mapDispatchToProps)(Login)
