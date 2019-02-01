@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink, Redirect } from 'react-router-dom'
 import { postData } from '../../api/api'
+import {connect} from 'react-redux'
+import {setUser} from '../../actions'
 
 import './Login.scss'
 
@@ -27,17 +29,19 @@ class Login extends Component {
     e.preventDefault();
     const { password, email } = this.state
     const user = { password, email }
-
+    let userResult
    try {
      const result = await postData('users', user)
-     console.log('result', result)
-     const userResult = await result.json(); 
+      userResult = await result.json()
+     console.log(userResult)
+     
     this.setState({canLogin:true})
   } catch (error) {
     this.setState({
       error:'That email or password does not exist'
   })
   }
+    this.props.setUser(userResult.data.name, userResult.data.id)
   }
 
   render() {
@@ -71,4 +75,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export const mapDispatchToProps = (dispatch)=>({
+  setUser:(name, id)=> dispatch(setUser(name,id)),
+})
+
+export default connect(null,mapDispatchToProps)(Login)

@@ -1,8 +1,10 @@
-const defaultState = []
+const defaultState = {}
 
 export const userReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'SET_USERS': return action.users;
-    default: return state;
+  case 'SET_USER':
+    return {name:action.name, id:action.id}
+  default:
+    return state;
   }
 }
