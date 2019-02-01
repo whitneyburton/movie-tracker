@@ -47,11 +47,11 @@ class CreateUser extends Component {
         <Redirect to='/' />
         :
         <form className='CreateUser'>
-          <input required onChange={this.handleChange} name='name' />
-          <input required onChange={this.handleChange} name='password' />
-          <input required onChange={this.handleChange} name='email' />
-          <button type='submit' onClick={this.handleSubmit}>Submit</button>
-          {error && <h3>Please enter a name, email, and password.</h3>}
+          <input required type='text' onChange={this.handleChange} name='name' />
+          <input required type='password' onChange={this.handleChange} name='password' />
+          <input required type='email' onChange={this.handleChange} name='email' />
+          <button type='submit' onSubmit={this.handleSubmit}>Submit</button>
+          {error && <h3>{error}</h3>}
         </form>
 
     )

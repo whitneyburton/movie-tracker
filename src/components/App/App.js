@@ -23,9 +23,9 @@ export class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path='/login' component={Login} />
-          <Route path='/createUser' component={CreateUser} />
+          <Route path='/create-user' component={CreateUser} />
         </Switch>
       </div>
     )

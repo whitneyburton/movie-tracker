@@ -18,7 +18,8 @@ export const postData = async (path = '', user) => {
   if (response.ok) {
     return response;
   } else {
-    throw new Error(`${response.message}: ${response.status}`);
+    var errorMessage = await response.json()
+    throw new Error(`${errorMessage.error}`);
   }
 }
 

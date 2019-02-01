@@ -6,11 +6,6 @@ import './Login.scss'
 
 class Login extends Component {
 
-  async componentDidMount() {
-    
-    const result = await fetchData('users')
-    this.props.setUsers(result.data)
-  }
 
   render() {
     // const users = this.props.users.map(user => {
@@ -25,7 +20,7 @@ class Login extends Component {
         <input/>
         <p>Email</p>
         <input/>
-        <NavLink className='CreateUserButton' to='/createUser'> CreateUser </NavLink>
+        <NavLink className='CreateUserButton' to='/create-user'> CreateUser </NavLink>
       </div> 
     )
   }
