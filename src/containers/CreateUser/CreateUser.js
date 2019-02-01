@@ -5,7 +5,7 @@ import './CreateUser.scss'
 
 class CreateUser extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       name: '',
       email: '',
