@@ -32,7 +32,8 @@ class Login extends Component {
      const result = await postData('users', user)
      console.log('result', result)
      const userResult = await result.json(); 
-    this.setState({canLogin:true})
+     console.log(userResult)
+      this.setState({canLogin:true})
   } catch (error) {
     this.setState({
       error:'That email or password does not exist'
