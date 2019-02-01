@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { postData } from '../../api/api'
+
 import './Login.scss'
 
 class Login extends Component {
@@ -9,6 +10,8 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      error:'',
+      canLogin:false
     }
   }
 
@@ -20,24 +23,29 @@ class Login extends Component {
     })
   }
 
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const { password, email } = this.state
-  //   const user = { password, email }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { password, email } = this.state
+    const user = { password, email }
 
-  //   try {
-  //     const result = await postData('users', user)
-  //     console.log(result)
-  //   } catch (error) {
-  //     this.setState({
-  //       error: error.message
-  //     })
-  //   }
-  // }
+   try {
+     const result = await postData('users', user)
+     console.log('result', result)
+     const userResult = await result.json(); 
+    this.setState({canLogin:true})
+  } catch (error) {
+    this.setState({
+      error:'That email or password does not exist'
+  })
+  }
+  }
 
   render() {
+    const{canLogin,error}=this.state
+
     return (
-      <div className='Login'>
+      canLogin ? <Redirect to='/'/> :
+      <form className='Login' onSubmit={this.handleSubmit}>
         <h1>Movie Tracker</h1>
         <h3>Welcome back!</h3>
         <input
@@ -52,13 +60,13 @@ class Login extends Component {
           required type='password'
           onChange={this.handleChange}
           name='password' />
-        <NavLink
+        {error && <h3>{error}</h3>}
+        <button
           className='sign-in link'
-          onClick={this.handleSubmit}
-          to='/'>Sign In</NavLink>
+          >Sign In</button>
         <p>New to Movie Tracker?</p>
         <NavLink className='create-user link' to='/create-user'>Create Account</NavLink>
-      </div> 
+      </form> 
     )
   }
 }

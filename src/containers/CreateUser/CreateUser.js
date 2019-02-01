@@ -34,8 +34,9 @@ class CreateUser extends Component {
         didPost: true
       })
     } catch (error) {
+      console.log(error.message)
       this.setState({
-        error: error.message
+        error: 'User already exists'
       })
     }
   }
@@ -45,7 +46,7 @@ class CreateUser extends Component {
     return (
       didPost ?
         <Redirect to='/' /> :
-        <form className='CreateUser'>
+        <form onSubmit={this.handleSubmit} className='CreateUser'>
           <input
             className='user-input'
             placeholder='Name'
@@ -67,7 +68,7 @@ class CreateUser extends Component {
           <button
             className='submit-user'
             type='submit'
-            onSubmit={this.handleSubmit}>Submit
+            >Submit
             </button>
           {error && <h3>{error}</h3>}
         </form>

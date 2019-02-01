@@ -5,7 +5,7 @@ import './Carousel.scss'
 
 const Carousel = (props) => {
   const movies = props.movies.map(movie => (
-    <Movie movie={movie} />
+      <Movie key={JSON.stringify(movie)} movie={movie} />
   ))
   return <div className='Carousel'>{movies}</div>
 } 
