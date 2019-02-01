@@ -3,22 +3,20 @@ import './App.scss'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setMovies } from '../../actions'
-import apiKey from '../../API_KEY/movie_api_key'
+import { fetchMovies } from '../../api/api'
 import Login from '../../containers/Login/Login'
 import Home from '../Home/Home'
 import CreateUser from '../../containers/CreateUser/CreateUser'
 
 export class App extends Component {
   
-  fetchMovies = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing${apiKey}`)
-    const unfilteredMovies = await response.json()
-    const movies = unfilteredMovies.results
+  retrieveMovies = async () => {
+    const movies = await fetchMovies()
     await this.props.setMovies(movies)
   }
 
   componentDidMount = async () => {
-    await this.fetchMovies()
+    await this.retrieveMovies()
   }
 
   render() {
