@@ -9,14 +9,9 @@ import '../../styles/main.scss'
 
 export class App extends Component {
 
-  retrieveMovies = async () => {
-    const movies = await fetchMovies()
-    await this.props.setMovies(movies)
-  }
+  retrieveMovies = async () => this.props.setMovies(await fetchMovies())
 
-  componentDidMount = async () => {
-    await this.retrieveMovies()
-  }
+  componentDidMount = () => this.retrieveMovies()
 
   render() {
     return (

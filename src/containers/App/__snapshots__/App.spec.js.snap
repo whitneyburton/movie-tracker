@@ -5,17 +5,18 @@ exports[`App should match the snapshot 1`] = `
   className="App"
 >
   <Switch>
-    <Route
-      component={[Function]}
-      path="/"
-    />
+    //Remove this and make login a popup!!
     <Route
       component={[Function]}
       path="/login"
     />
     <Route
       component={[Function]}
-      path="/createUser"
+      path="/create-user"
+    />
+    <Route
+      component={[Function]}
+      path="/"
     />
   </Switch>
 </div>

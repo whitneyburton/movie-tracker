@@ -2,7 +2,7 @@ import * as actions from './index'
 
 describe('actions', () => {
   const movies = [
-    { 'title': "Aquaman",  },
+    { 'title': "Aquaman", },
     { name: 'title1' }
   ]
   const user = {
@@ -24,7 +24,7 @@ describe('actions', () => {
       const expected = { type: 'TOGGLE_FAVORITE', id: 1 }
       const result = actions.toggleFavorite(1)
       expect(result).toEqual(expected)
-    }) 
+    })
   })
 
   describe('setMovies', () => {
@@ -36,10 +36,10 @@ describe('actions', () => {
     })
   })
 
-  describe('addUser', () => {
-    it('should return an object with a type of ADD_USER and name,password, and email', () => {
-      const expected = { type: 'ADD_USER', name: user.name, password: user.password, email: user.email }
-      const result = actions.addUser(user.name, user.password, user.email)
+  describe('setUser', () => {
+    it('should return an object with a type of SET_USER and name, password, and email', () => {
+      const expected = { user: user.name, type: 'SET_USER' }
+      const result = actions.setUser(user.name, user.password, user.email)
       expect(result).toEqual(expected)
     })
   })

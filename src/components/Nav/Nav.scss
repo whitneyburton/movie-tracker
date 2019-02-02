@@ -1,10 +1,22 @@
-nav{
-  background:#232D32;
-  height:100vh;
-  display:grid;
-  width:10%;
-  align-items: center;
-  a{
-    color:#C4C4C4;
+nav {
+  background: #232D32;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 10%;
+
+  a {
+    align-items: center;
+    background: rgba(196, 196, 196, 0.12);
+    color: #ECEBEE;
+    display: grid;
+    height: 100px;
+    justify-content: center;
+    margin: 10px auto;
+    text-decoration: none;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 3px rgba(196, 196, 196, 0.12), 0 0 0px 8px #232D32;
   }
 }

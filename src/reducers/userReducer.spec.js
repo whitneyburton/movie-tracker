@@ -3,7 +3,7 @@ import * as actions from '../actions/'
 
 describe('userReducer', () => {
   it('should return the default state', () => {
-    const expected = []
+    const expected = null
     const result = userReducer(undefined, {})
     expect(result).toEqual(expected)
   })
@@ -12,7 +12,7 @@ describe('userReducer', () => {
     const expected = [
       { name: 'Whitney', password: '391823', email: 'whitney@gmail.com' },
       { name: 'Justin', password: '235234', email: 'justin@gmail.com' }]
-    const result = userReducer(undefined, actions.setUsers(expected))
+    const result = userReducer(undefined, actions.setUser(expected))
     expect(result).toEqual(expected)
   })
 })
