@@ -18,7 +18,6 @@ class Login extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-
     this.setState({
       [name]: value,
     })
@@ -34,10 +33,8 @@ class Login extends Component {
       const { data } = await result.json()
       const { name, id } = data
       const retrieveFavUrl = `users/${id}/favorites`
-      
       const favorites = await fetchData(retrieveFavUrl)
       this.props.setFavorites(favorites.data, movies)
-      // this.props.setMovies(movies)
       this.props.setUser({ name, id })
       this.setState({ canLogin: true })
     } catch (error) {

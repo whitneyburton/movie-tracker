@@ -38,6 +38,22 @@ export const postFavorite = async (path = '', user) => {
   }
 }
 
+export const deleteFavorite = async (path = '', user) => {
+  const response = await fetch(`${dbUrl}${path}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user)
+  })
+
+  if (response.ok) {
+    return response;
+  } else {
+    throw new Error(`${response.statusText}`);
+  }
+}
+
 export const fetchData = async (path) => {
   const response = await fetch(`${dbUrl}${path}`)
   if (response.ok) {

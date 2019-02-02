@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { postFavorite, fetchData } from '../../api'
+import { postFavorite, fetchData, deleteFavorite } from '../../api'
 import './Movie.scss'
 
-const Movie = ({ movie, movies, user, setPromptLogin, showLoginPrompt, toggleFavorite, setFavorites }) => {
+const Movie = ({ movie, movies, user, setPromptLogin, setFavorites }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
-
   const checkCanFavorite = async () => {
     await setPromptLogin(!user)
     if (user) {
       const addFavUrl = '/users/favorites/new'
       const retrieveFavUrl = `users/${user.id}/favorites`
+      const deleteFavUrl = `users/${user.id}/favorites/${movie.id}`
       const favMovie = {
         movie_id: movie.id,
         user_id: user.id,
@@ -20,10 +20,15 @@ const Movie = ({ movie, movies, user, setPromptLogin, showLoginPrompt, toggleFav
         vote_average: movie.vote_average,
         overview: movie.overview,
       }
-      await postFavorite(addFavUrl, favMovie)
+      const deleteMovie = {
+        user_id: user.id,
+        movie_id: movie.id,
+      }
+      !movie.isFavorite ?
+        await postFavorite(addFavUrl, favMovie) :
+        await deleteFavorite(deleteFavUrl, deleteMovie)
       const favorites = await fetchData(retrieveFavUrl)
       setFavorites(favorites.data, movies)
-
     }
   }
 

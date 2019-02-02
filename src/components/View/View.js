@@ -7,7 +7,9 @@ const View = () => {
   return (
     <div className='View'>
       <Route path='/' component={Profile} />
-      <Route path='/' component={Carousel} />
+      <Route path='/' render={({ location }) => {
+        return <Carousel location={location} />
+      }} />
     </div>
   )
 }

@@ -16,7 +16,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>//Remove this and make login a popup!!
+        <Switch> //Remove this and make login a popup!!
           <Route path='/login' component={Login} />
           <Route path='/create-user' component={CreateUser} />
           <Route path='/' component={Home} />
@@ -32,10 +32,3 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default withRouter(connect(null, mapDispatchToProps)(App))
-
-// to get all users :'/users',
-// to sign in: '/users' // must have a body with email and password
-// router.post('/users/new', db.createUser)
-// router.post('/users/favorites/new', db.addFavorite)
-// router.get('/users/:id/favorites', db.getAllFavorites)
-// router.delete('/users/:id/favorites/:movie_id', db.deleteFavorite)

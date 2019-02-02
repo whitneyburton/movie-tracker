@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react'
 import { Route, withRouter, Link } from 'react-router-dom'
 import { Movie, Popup } from '../../components/'
-import { setPromptLogin, toggleFavorite, setFavorites } from '../../actions'
+import { setPromptLogin, setFavorites } from '../../actions'
 import { connect } from 'react-redux'
 import './Carousel.scss'
 
 const Carousel = (props) => {
-  const { movies, user, shouldPromptLogin, setPromptLogin, toggleFavorite, setFavorites } = props
-
+  const { movies, user, shouldPromptLogin, setPromptLogin, setFavorites, location } = props
   const movieCards = movies.map(movie => (
     <Movie
       key={JSON.stringify(movie)}
@@ -15,14 +14,20 @@ const Carousel = (props) => {
       movie={movie}
       movies={movies}
       setFavorites={setFavorites}
-      toggleFavorite={toggleFavorite}
-      setPromptLogin={setPromptLogin}
-      shouldPromptLogin={shouldPromptLogin} />
+      setPromptLogin={setPromptLogin} />
   ))
+  const showFav = location.pathname.includes('favorites')
+  const filteredFavorites = movieCards.filter(movieCard => {
+    const { isFavorite } = movieCard.props.movie
+    return isFavorite
+  })
+  const noFav = !filteredFavorites.length && <h1 style={{color: 'white'}}>You need to favorite some damn movies.</h1>
 
   return (
     <Fragment>
-      <div className='Carousel'>{movieCards}</div>
+      <div className='Carousel'>
+        {showFav ? (noFav || filteredFavorites) : movieCards}
+      </div>
       {
         shouldPromptLogin &&
         <div>
@@ -33,9 +38,7 @@ const Carousel = (props) => {
       }
       <Route path='/movies/:id' render={({ match }) => {
         const movie = movies.find(movie => movie.id === parseInt(match.params.id))
-
         if (!movie) return <div> Movie does not exist</div>
-
         return <Popup movie={movie} user={user} setPromptLogin={setPromptLogin} />
       }} />
     </Fragment>
@@ -51,7 +54,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setFavorites: (favorites, movies) => dispatch(setFavorites(favorites, movies)),
   setPromptLogin: (bool) => dispatch(setPromptLogin(bool)),
-  toggleFavorite: (id) => dispatch(toggleFavorite(id)),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Carousel))
