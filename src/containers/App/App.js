@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import './App.scss'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { fetchMovies } from '../../api/'
 import { setMovies } from '../../actions'
-import { fetchMovies } from '../../api/api'
-import Login from '../../containers/Login/Login'
-import Home from '../Home/Home'
-import CreateUser from '../../containers/CreateUser/CreateUser'
+import { Home } from '../../components/'
+import { Login, CreateUser } from '../../containers/'
+import '../../styles/main.scss'
 
 export class App extends Component {
-  
+
   retrieveMovies = async () => {
     const movies = await fetchMovies()
     await this.props.setMovies(movies)
@@ -22,11 +21,11 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
+        <Switch>//Remove this and make login a popup!!
           <Route path='/login' component={Login} />
           <Route path='/create-user' component={CreateUser} />
           <Route path='/' component={Home} />
-                 
+
         </Switch>
       </div>
     )

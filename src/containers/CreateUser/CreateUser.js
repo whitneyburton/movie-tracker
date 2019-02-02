@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { postData } from '../../api/api'
+import { postData } from '../../api'
 import './CreateUser.scss'
 
 class CreateUser extends Component {
@@ -68,7 +68,7 @@ class CreateUser extends Component {
           <button
             className='submit-user'
             type='submit'
-            >Submit
+          >Submit
             </button>
           {error && <h3>{error}</h3>}
         </form>
