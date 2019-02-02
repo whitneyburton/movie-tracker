@@ -29,20 +29,17 @@ class Login extends Component {
     e.preventDefault();
     const { password, email } = this.state
     const user = { password, email }
-    let userResult
     try {
       const result = await postData('users', user)
-      userResult = await result.json()
-      console.log(userResult)
-
+      const { data } = await result.json()
+      const { name, id } = data
+      this.props.setUser({ name, id })
       this.setState({ canLogin: true })
     } catch (error) {
       this.setState({
         error: 'That email or password does not exist'
       })
     }
-    const { name, id } = userResult.data
-    this.props.setUser({ name, id })
   }
 
   render() {
