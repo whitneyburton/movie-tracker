@@ -2,13 +2,15 @@ import { combineReducers } from 'redux'
 import { moviesReducer } from './moviesReducer'
 import { filterReducer } from './filterReducer'
 import { userReducer } from './userReducer'
+import {loginReducer} from './loginReducer'
 //import {favoriteReducer} from './favoriteReducer'
 
 const rootReducer = combineReducers({
     movies: moviesReducer,
     filter: filterReducer,
     //favorite: favoriteReducer,
-    user: userReducer,
+  user: userReducer,
+  showLoginPrompt:loginReducer
 })
 
 export default rootReducer;

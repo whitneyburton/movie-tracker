@@ -23,9 +23,10 @@ export class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Home} />
           <Route path='/login' component={Login} />
           <Route path='/create-user' component={CreateUser} />
+          <Route path='/' component={Home} />
+                 
         </Switch>
       </div>
     )

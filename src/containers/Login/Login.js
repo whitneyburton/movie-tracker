@@ -66,9 +66,7 @@ class Login extends Component {
           onChange={this.handleChange}
           name='password' />
         {error && <h3>{error}</h3>}
-        <button
-          className='sign-in link'
-          >Sign In</button>
+        <button className='sign-in link'> Sign In </button>
         <p>New to Movie Tracker?</p>
         <NavLink className='create-user link' to='/create-user'>Create Account</NavLink>
       </form> 

@@ -19,6 +19,12 @@ export const setMovies = (movies) => ({
 
 export const setUser = (user) => ({
     type: 'SET_USER',
-    user
+    user,
+})
+
+// LoginPrompt key
+export const setLoginPrompt = (bool) => ({
+  type: 'SET_LOGIN_PROMPT',
+  bool,
 })
 
