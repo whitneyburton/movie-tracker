@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Popup = ({ movie, user, setLoginPrompt }) => {
+const Popup = ({ movie, user, setPromptLogin }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
 
   return (
@@ -14,7 +14,7 @@ const Popup = ({ movie, user, setLoginPrompt }) => {
         src={imgUrl + movie.poster_path}
         className='movie-poster'
         alt='movie poster'></img>
-      <button className='favorite-btn' onClick={() => setLoginPrompt(!user)}>Add To Favorites </button>
+      <button className='favorite-btn' onClick={() => setPromptLogin(!user)}>Add To Favorites </button>
 
     </div>)
 }

@@ -15,6 +15,12 @@ export const setMovies = (movies) => ({
   movies,
 })
 
+export const setFavorites = (favorites, movies) => ({
+    type: 'SET_FAVORITES',
+    favorites,
+    movies,
+})
+
 // Users key 
 
 export const setUser = (user) => ({
@@ -23,8 +29,8 @@ export const setUser = (user) => ({
 })
 
 // LoginPrompt key
-export const setLoginPrompt = (bool) => ({
-  type: 'SET_LOGIN_PROMPT',
+
+export const setPromptLogin = (bool) => ({
+  type: 'SET_PROMPT_LOGIN',
   bool,
 })
-

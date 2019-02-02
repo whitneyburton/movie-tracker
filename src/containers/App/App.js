@@ -10,7 +10,7 @@ import '../../styles/main.scss'
 export class App extends Component {
 
   retrieveMovies = async () => this.props.setMovies(await fetchMovies())
-
+  
   componentDidMount = () => this.retrieveMovies()
 
   render() {

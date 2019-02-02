@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink, Redirect } from 'react-router-dom'
-import { postData } from '../../api'
+import { postData, fetchData, postFavorite } from '../../api'
 import { connect } from 'react-redux'
-import { setUser } from '../../actions'
-
+import { setMovies, setUser, setFavorites } from '../../actions'
 import './Login.scss'
 
 class Login extends Component {
@@ -29,10 +28,16 @@ class Login extends Component {
     e.preventDefault();
     const { password, email } = this.state
     const user = { password, email }
+    const { movies } = this.props
     try {
       const result = await postData('users', user)
       const { data } = await result.json()
       const { name, id } = data
+      const retrieveFavUrl = `users/${id}/favorites`
+      
+      const favorites = await fetchData(retrieveFavUrl)
+      this.props.setFavorites(favorites.data, movies)
+      // this.props.setMovies(movies)
       this.props.setUser({ name, id })
       this.setState({ canLogin: true })
     } catch (error) {
@@ -71,8 +76,14 @@ class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user)),
+export const mapStateToProps = (state) => ({
+  movies: state.movies,
 })
 
-export default connect(null, mapDispatchToProps)(Login)
+export const mapDispatchToProps = (dispatch) => ({
+  setMovies: (movies) => dispatch(setMovies(movies)),
+  setUser: (user) => dispatch(setUser(user)),
+  setFavorites: (favorites, movies) => dispatch(setFavorites(favorites,movies)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -13,6 +13,16 @@ export const moviesReducer = (state = defaultState, action) => {
       })
     case 'SET_MOVIES':
       return action.movies
+    case 'SET_FAVORITES':
+      return [...action.movies].map(movie => {
+        movie.isFavorite = false
+        action.favorites.forEach(favorite => {
+          if (favorite.movie_id === movie.id) {
+            movie.isFavorite = true
+          }
+        })
+        return movie;
+      })
     default: return state
   }
 }
