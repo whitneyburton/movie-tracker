@@ -37,7 +37,8 @@
     ],
     "collectCoverageFrom": [
       "src/*/*.js",
-      "!src/API_KEY/*",
+      "!src/api/movie_api_key.js",
+      "!src/mockData/*.js",
       "src/*/*/*.js"
     ]
   }

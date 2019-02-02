@@ -1,4 +1,4 @@
-import apiKey from '../API_KEY/movie_api_key'
+import apiKey from './movie_api_key'
 
 // const usersUrl = 'http://localhost:3000/api/'
 const usersUrl = 'https://falsemotive.io/api/'
