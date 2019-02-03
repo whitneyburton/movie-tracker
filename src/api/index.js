@@ -2,69 +2,40 @@ import apiKey from './movie_api_key'
 
 // const dbUrl = 'http://localhost:3000/api/'
 const dbUrl = 'https://falsemotive.io/api/'
-const moviesUrl = 'https://api.themoviedb.org/3/movie/now_playing'
+const moviesUrl = 'https://api.themoviedb.org/3/movie/'
+const options = (method, data) => ({
+  method,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data)
+})
 
-// const options 
-
-export const postData = async (path = '', user) => {
-  const response = await fetch(`${dbUrl}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user)
-  })
-
-  if (response.ok) {
-    return response;
-  } else {
-    throw new Error(`${response.statusText}`);
-  }
+export const postData = async (path = '', data) => {
+  const response = await fetch(`${dbUrl}${path}`, options('POST', data))
+  if (!response.ok) throw new Error(`${response.statusText}`)
+  const unfilteredData = await response.json()
+  return unfilteredData.data
 }
 
-export const postFavorite = async (path = '', user) => {
-  const response = await fetch(`${dbUrl}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user)
-  })
-
-  if (response.ok) {
-    return response;
-  } else {
-    throw new Error(`${response.statusText}`);
-  }
+export const deleteData = async (path = '', data) => {
+  const response = await fetch(`${dbUrl}${path}`, options('DELETE', data))
+  console.log(data)
+  if (!response.ok) throw new Error(`${response.statusText}`)
+  console.log(response)
+  const unfilteredData = await response.json()
+  return unfilteredData.results
 }
 
-export const deleteFavorite = async (path = '', user) => {
-  const response = await fetch(`${dbUrl}${path}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user)
-  })
-
-  if (response.ok) {
-    return response;
-  } else {
-    throw new Error(`${response.statusText}`);
-  }
-}
-
-export const fetchData = async (path) => {
+export const getData = async (path) => {
   const response = await fetch(`${dbUrl}${path}`)
-  if (response.ok) {
-    return await response.json()
-  } else {
-    throw new Error(`${response.message}: ${response.status}`);
-  }
+  if (!response.ok) throw new Error(`${response.statusText}`)
+  const unfilteredData = await response.json()
+  return unfilteredData.data
 }
 
-export const fetchMovies = async () => {
-  const response = await fetch(`${moviesUrl}${apiKey}`)
+export const getMovies = async (path) => {
+  const response = await fetch(`${moviesUrl}${path}${apiKey}`)
   const unfilteredMovies = await response.json()
   return unfilteredMovies.results
 }

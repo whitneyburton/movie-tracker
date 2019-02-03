@@ -2,7 +2,22 @@
   width: 30%;
   border: 1px solid white;
   margin: 10px;
+
+  // z-index: -1;
+  .popup {
+    height: 50%;
+    width: 50%;
+    z-index: 1;
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, .5)
+  }
+
 }
+
+
 
 .movie-title {
   color: #ECEBEE;

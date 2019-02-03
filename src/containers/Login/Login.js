@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
-import { postData, fetchData, postFavorite } from '../../api'
+import { NavLink, Redirect, Link } from 'react-router-dom'
+import { postData, getData } from '../../api'
 import { connect } from 'react-redux'
-import { setMovies, setUser, setFavorites } from '../../actions'
+import { setMovies, setUser, setFavorites, setShouldPromptLogin, setPopup } from '../../actions'
 import './Login.scss'
 
 class Login extends Component {
@@ -22,28 +22,39 @@ class Login extends Component {
       [name]: value,
     })
   }
+  setUser = async () => {
+    const { password, email } = this.state
+    const data = await postData('users', { password, email })
+    const { name, id } = data
+    this.props.setUser({ name, id })
+    return id;
+  }
+
+  setFavorites = async (userID) => {
+    const retrieveFavUrl = `users/${userID}/favorites`
+    const favorites = await getData(retrieveFavUrl)
+    this.props.setFavorites(favorites, userID)
+  }
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { password, email } = this.state
-    const user = { password, email }
-    const { movies } = this.props
+
     try {
-      const result = await postData('users', user)
-      const { data } = await result.json()
-      const { name, id } = data
-      const retrieveFavUrl = `users/${id}/favorites`
-      const favorites = await fetchData(retrieveFavUrl)
-      this.props.setFavorites(favorites.data, movies)
-      this.props.setUser({ name, id })
+      const userID = await this.setUser()
+      this.setFavorites(userID)
       this.setState({ canLogin: true })
+      this.props.setPopup(false)
     } catch (error) {
       this.setState({
         error: 'That email or password does not exist'
       })
+
     }
   }
-
+  componentDidMount = () => {
+    this.props.setPopup(true)
+    this.props.setShouldPromptLogin(false)
+  }
   render() {
     const { canLogin, error } = this.state
 
@@ -65,6 +76,7 @@ class Login extends Component {
             onChange={this.handleChange}
             name='password' />
           {error && <h3>{error}</h3>}
+          <Link to='/' onClick={() => this.props.setPopup(false)}>Back</Link>
           <button className='sign-in link'> Sign In </button>
           <p>New to Movie Tracker?</p>
           <NavLink className='create-user link' to='/create-user'>Create Account</NavLink>
@@ -80,7 +92,9 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
   setUser: (user) => dispatch(setUser(user)),
-  setFavorites: (favorites, movies) => dispatch(setFavorites(favorites,movies)),
+  setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
+  setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
+  setPopup: (bool) => dispatch(setPopup(bool)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

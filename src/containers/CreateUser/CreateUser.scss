@@ -1,5 +1,13 @@
-.CreateUser{
-  color:whitesmoke; 
+.CreateUser {
+  color: whitesmoke;
+  height: 50%;
+  width: 50%;
+  z-index: 1;
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, .5);
 
   .user-input {
     font-size: 14px;

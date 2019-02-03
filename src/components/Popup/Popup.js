@@ -6,7 +6,7 @@ const Popup = ({ movie, user, setPromptLogin }) => {
 
   return (
     <div>
-      <Link to='/'>x</Link>
+      
       <h1 className='movie-title'>{movie.title}</h1>
       <p className='movie-title'>{movie.release_date}</p>
 
