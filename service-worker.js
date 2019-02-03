@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/THE_BEST_MOVIES/precache-manifest.7941b104a7bde5bc17797e4d8fca3fb4.js"
+  "/The_Best_Movies/precache-manifest.01894428a5944dd86a039d1caafeaad7.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/THE_BEST_MOVIES/index.html", {
+workbox.routing.registerNavigationRoute("/The_Best_Movies/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
