@@ -15,22 +15,19 @@ export const setFavorites = (favorites, user_id) => ({
   user_id
 })
 
-// Users key 
-
+// User key 
 export const setUser = (user) => ({
   type: 'SET_USER',
   user,
 })
 
-// LoginPrompt key
-
+// Login key
 export const setShouldPromptLogin = (bool) => ({
   type: 'SET_SHOULD_PROMPT_LOGIN',
   bool,
 })
 
 // isPopup key
-
 export const setPopup = (bool) => ({
   type: 'SET_POPUP',
   bool
