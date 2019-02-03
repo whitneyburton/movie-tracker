@@ -1,8 +1,7 @@
 // Movie key
-
 export const toggleFavorite = (id) => ({
-    type:'TOGGLE_FAVORITE',
-    id,
+  type: 'TOGGLE_FAVORITE',
+  id,
 })
 
 export const setMovies = (movies) => ({
@@ -10,22 +9,29 @@ export const setMovies = (movies) => ({
   movies,
 })
 
-export const setFavorites = (favorites, movies) => ({
-    type: 'SET_FAVORITES',
-    favorites,
-    movies,
+export const setFavorites = (favorites, user_id) => ({
+  type: 'SET_FAVORITES',
+  favorites,
+  user_id
 })
 
 // Users key 
 
 export const setUser = (user) => ({
-    type: 'SET_USER',
-    user,
+  type: 'SET_USER',
+  user,
 })
 
 // LoginPrompt key
 
-export const setPromptLogin = (bool) => ({
-  type: 'SET_PROMPT_LOGIN',
+export const setShouldPromptLogin = (bool) => ({
+  type: 'SET_SHOULD_PROMPT_LOGIN',
   bool,
+})
+
+// isPopup key
+
+export const setPopup = (bool) => ({
+  type: 'SET_POPUP',
+  bool
 })

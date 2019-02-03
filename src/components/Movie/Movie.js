@@ -1,52 +1,67 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { postFavorite, fetchData, deleteFavorite } from '../../api'
+import { postData, getData, deleteData, getMovies } from '../../api'
+import { setShouldPromptLogin, setFavorites, setPopup } from '../../actions'
+import { connect } from 'react-redux'
 import './Movie.scss'
 
-const Movie = ({ movie, movies, user, setPromptLogin, setFavorites }) => {
+const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPopup }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
   const checkCanFavorite = async () => {
-    await setPromptLogin(!user)
+    await setShouldPromptLogin(!user)
     if (user) {
-      const addFavUrl = '/users/favorites/new'
-      const retrieveFavUrl = `users/${user.id}/favorites`
-      const deleteFavUrl = `users/${user.id}/favorites/${movie.id}`
-      const favMovie = {
-        movie_id: movie.id,
-        user_id: user.id,
-        title: movie.title,
-        poster_path: movie.poster_path,
-        release_date: movie.release_date,
-        vote_average: movie.vote_average,
-        overview: movie.overview,
+      const urlToAddFav = '/users/favorites/new'
+      const urlToGetFav = `users/${user.id}/favorites`
+      const urlToDelFav = `${urlToGetFav}/${movie.id}`
+      try {
+        !movie.isFavorite ?
+          await postData(urlToAddFav, movie) :
+          await deleteData(urlToDelFav, movie)
+        const favorites = await getData(urlToGetFav)
+        setFavorites(favorites, user.id)
+      } catch (error) {
+        console.log(error)
       }
-      const deleteMovie = {
-        user_id: user.id,
-        movie_id: movie.id,
-      }
-      !movie.isFavorite ?
-        await postFavorite(addFavUrl, favMovie) :
-        await deleteFavorite(deleteFavUrl, deleteMovie)
-      const favorites = await fetchData(retrieveFavUrl)
-      setFavorites(favorites.data, movies)
     }
   }
+  const getImage = () => {
+    return <Link to={`/movies/${movie.id}`}  >
+      <img
+        onClick={() => setPopup(true)}
+        src={imgUrl + movie.poster_path}
+        className='movie-poster'
+        alt='movie poster'></img>
+    </Link>
+  }
+  const getTrailer = () => {
 
+    return <iframe width="560" height="315"
+      src={`https://www.youtube.com/embed/${movie.trailer}?controls=0`}
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  }
+  const _class = isPopup ? 'popup' : 'Movie'
   return (
-    <div className='Movie' >
-      <div>{movie.isFavorite ? '⭐' : '☆'}</div>
-      <Link to={`/movies/${movie.id}`} >
-        <h1 className='movie-title'>{movie.title}</h1>
-        <p className='movie-title'>{movie.release_date}</p>
-        <img
-          src={imgUrl + movie.poster_path}
-          className='movie-poster'
-          alt='movie poster'></img>
-      </Link>
-      <button className='favorite-btn'
-        data-id={movie.id} onClick={() => checkCanFavorite()}>Add To Favorites </button>
+    <div className={_class} >
+      {isPopup && <Link onClick={() => setPopup(false)} to='/'>x</Link>}
+      {isPopup && <h1 className='movie-title'>{movie.title}</h1>}
+      {isPopup && <p className='movie-title'>{movie.release_date}</p>}
+      {isPopup && getTrailer()}
+
+      {!isPopup && getImage()}
+
+      <span className='favorite-btn' onClick={() => checkCanFavorite()}>{movie.isFavorite ? '⭐' : '☆'}</span>
     </div>
   )
 }
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
 
-export default Movie
+const mapDispatchToProps = (dispatch) => ({
+  setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
+  setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
+  setPopup: (bool) => dispatch(setPopup(bool)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)

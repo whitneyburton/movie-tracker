@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { postData } from '../../api'
 import './CreateUser.scss'
 
@@ -34,18 +34,17 @@ class CreateUser extends Component {
         didPost: true
       })
     } catch (error) {
-      console.log(error.message)
       this.setState({
         error: 'User already exists'
       })
     }
   }
-
+  componentDidMount = () => this.props.setPopup(true)
   render() {
     const { didPost, error } = this.state
     return (
       didPost ?
-        <Redirect to='/' /> :
+        <Redirect to='/login' /> :
         <form onSubmit={this.handleSubmit} className='CreateUser'>
           <input
             className='user-input'
@@ -65,6 +64,7 @@ class CreateUser extends Component {
             required type='password'
             onChange={this.handleChange}
             name='password' />
+          <Link to='/' onClick={() => this.props.setPopup(false)}>Back</Link>
           <button
             className='submit-user'
             type='submit'

@@ -1,18 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setUser } from '../../actions'
+import { setUser, setMovies, setPopup } from '../../actions'
+import { getMovies } from '../../api/'
 import './Profile.scss'
 
 const Profile = (props) => {
+
+  const logout = async () => {
+    props.setUser(null)
+    props.setMovies(await getMovies())
+  }
+
 
   return (
     <div className='Profile' >
       <p>Profile</p>
       {!props.user ?
-        <Link to='/login'>Login</Link>
+        <Link to='/login' onClick={() => props.setPopup(true)} >Login</Link>
         :
-        <button onClick={() => props.setUser(null)}>Logout</button>}
+        <button onClick={() => logout()}>Logout</button>}
     </div>
   )
 }
@@ -22,8 +29,9 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user))
+  setUser: (user) => dispatch(setUser(user)),
+  setMovies: (movies) => dispatch(setMovies(movies)),
+  setPopup: (bool) => dispatch(setPopup(bool)),
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

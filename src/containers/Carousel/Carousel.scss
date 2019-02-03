@@ -1,4 +1,9 @@
 .Carousel {
   display: flex;
   overflow: scroll;
+
+}
+
+.blur {
+  filter: blur(3px)
 }
