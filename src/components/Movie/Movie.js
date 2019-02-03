@@ -36,7 +36,7 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
   const getTrailer = () => {
 
     return <iframe width="560" height="315"
-      src={`https://www.youtube.com/embed/${movie.trailer}?controls=0`}
+      src={`https://www.youtube.com/embed/${movie.trailer}`}
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
   }
