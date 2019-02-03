@@ -20,9 +20,7 @@ export const postData = async (path = '', data) => {
 
 export const deleteData = async (path = '', data) => {
   const response = await fetch(`${dbUrl}${path}`, options('DELETE', data))
-  console.log(data)
   if (!response.ok) throw new Error(`${response.statusText}`)
-  console.log(response)
   const unfilteredData = await response.json()
   return unfilteredData.results
 }
@@ -36,6 +34,7 @@ export const getData = async (path) => {
 
 export const getMovies = async (path) => {
   const response = await fetch(`${moviesUrl}${path}${apiKey}`)
+  if (!response.ok) throw new Error(`${response.statusText}`)
   const unfilteredMovies = await response.json()
   return unfilteredMovies.results
 }
