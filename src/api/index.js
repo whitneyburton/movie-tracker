@@ -20,7 +20,9 @@ export const postData = async (path = '', data) => {
 
 export const deleteData = async (path = '', data) => {
   const response = await fetch(`${dbUrl}${path}`, options('DELETE', data))
+  console.log(data)
   if (!response.ok) throw new Error(`${response.statusText}`)
+  console.log(response)
   const unfilteredData = await response.json()
   return unfilteredData.results
 }

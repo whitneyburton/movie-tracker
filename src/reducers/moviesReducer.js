@@ -6,7 +6,6 @@ export const moviesReducer = (state = defaultState, action) => {
 
     case 'SET_MOVIES':
       return action.movies.map(movie => {
-        movie.isFavorite = false
         movie.movie_id = movie.id
         return movie
       })
@@ -21,6 +20,7 @@ export const moviesReducer = (state = defaultState, action) => {
 
     case 'SET_FAVORITES':
       return [...state].map(movie => {
+        movie.isFavorite = false;
         movie.user_id = action.user_id
 
         action.favorites.forEach(favorite => {

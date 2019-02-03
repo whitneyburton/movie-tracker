@@ -9,7 +9,7 @@ const Profile = (props) => {
 
   const logout = async () => {
     props.setUser(null)
-    props.setMovies(await getMovies())
+    props.setMovies(await getMovies('now_playing'))
   }
 
 

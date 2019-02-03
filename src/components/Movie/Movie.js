@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { postData, getData, deleteData, getMovies } from '../../api'
+import { postData, getData, deleteData } from '../../api'
 import { setShouldPromptLogin, setFavorites, setPopup } from '../../actions'
 import { connect } from 'react-redux'
 import './Movie.scss'
@@ -18,6 +18,7 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
           await postData(urlToAddFav, movie) :
           await deleteData(urlToDelFav, movie)
         const favorites = await getData(urlToGetFav)
+        console.log(favorites, user)
         setFavorites(favorites, user.id)
       } catch (error) {
         console.log(error)
@@ -35,7 +36,7 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
   }
   const getTrailer = () => {
 
-    return <iframe width="560" height="315"
+    return <iframe width="560" height="315" title={movie.title}
       src={`https://www.youtube.com/embed/${movie.trailer}`}
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
