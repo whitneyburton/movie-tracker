@@ -1,6 +1,7 @@
 import * as api from './'
 import { mockMovie, mockMoviesResponse, mockMoviesArray } from '../mockData/movies'
 import { mockUserFavesResponse, mockUserFavesArray } from '../mockData/userFavorites'
+import apiKey from '../api/movie_api_key'
 
 describe('api', () => {
   let mockUrl
@@ -58,12 +59,9 @@ describe('api', () => {
   })
 
   describe('getMovies', () => {
-    let apiKey 
-
     beforeEach(() => {
       mockUrl = 'https://api.themoviedb.org/3/movie/'
       mockPath = 'users/27/favorites/'
-      apiKey = '?api_key=c9bb5285a21a8f1a712d66e997b3a446'
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => Promise.resolve(mockMoviesResponse),
         ok: true,
