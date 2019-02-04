@@ -10,11 +10,13 @@
 .popup {
   z-index: 1;
   position: absolute;
-  left: 200px;
-  top: 100px;
-  border-radius: 25px;
+  left: 4%;
+  top: 10%;
+  border-radius: 15px;
   background: rgba(0, 0, 0, 0.83);
   color: #ECEBEE;
+  padding: 30px;
+  width: 85%;
 
   .close-popup {
     color: #ECEBEE;
@@ -29,7 +31,6 @@
 .movie-vote {
   font-size: 18px;
 }
-
 
 .favorite-btn {
   display: block;
