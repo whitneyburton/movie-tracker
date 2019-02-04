@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser, setMovies, setPopup } from '../../actions'
@@ -6,7 +6,7 @@ import { getMovies } from '../../api/'
 import './Profile.scss'
 
 const Profile = (props) => {
-
+  const { user } = props
   const logout = async () => {
     props.setUser(null)
     props.setMovies(await getMovies('now_playing'))
@@ -14,13 +14,17 @@ const Profile = (props) => {
 
 
   return (
-    <div className='Profile' >
-      <p>Profile</p>
-      {!props.user ?
-        <Link to='/login' onClick={() => props.setPopup(true)} >Login</Link>
+    <Fragment>
+      {!user ?
+        <div className='Profile'>
+          <Link to='/login' className='login-link' onClick={() => props.setPopup(true)} >SIGN IN</Link>
+        </div>
         :
-        <button onClick={() => logout()}>Logout</button>}
-    </div>
+        <div className='Profile'>
+          <p className='user-name'>{user.name.toUpperCase()}</p>
+          <button className='logout-btn' onClick={() => logout()}>SIGN OUT</button>
+        </div>}
+    </Fragment>
   )
 }
 
