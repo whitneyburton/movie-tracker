@@ -31,8 +31,8 @@ class Login extends Component {
   }
 
   setFavorites = async (userID) => {
-    const retrieveFavUrl = `users/${userID}/favorites`
-    const favorites = await getData(retrieveFavUrl)
+    const retrieveFavPath = `users/${userID}/favorites`
+    const favorites = await getData(retrieveFavPath)
     this.props.setFavorites(favorites, userID)
   }
 

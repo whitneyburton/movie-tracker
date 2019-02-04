@@ -10,14 +10,14 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
   const checkCanFavorite = async () => {
     await setShouldPromptLogin(!user)
     if (user) {
-      const urlToAddFav = '/users/favorites/new'
-      const urlToGetFav = `users/${user.id}/favorites`
-      const urlToDelFav = `${urlToGetFav}/${movie.id}`
+      const pathToAddFav = '/users/favorites/new'
+      const pathToGetFav = `users/${user.id}/favorites`
+      const pathToDeleteFav = `${pathToGetFav}/${movie.id}`
       try {
         !movie.isFavorite ?
-          await postData(urlToAddFav, movie) :
-          await deleteData(urlToDelFav, movie)
-        const favorites = await getData(urlToGetFav)
+          await postData(pathToAddFav, movie) :
+          await deleteData(pathToDeleteFav, movie)
+        const favorites = await getData(pathToGetFav)
         console.log(favorites, user)
         setFavorites(favorites, user.id)
       } catch (error) {

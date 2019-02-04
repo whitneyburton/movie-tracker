@@ -1,9 +1,0 @@
-const defaultState = ''
-
-export const filterReducer = (state = defaultState, action) => {
-  switch(action.type) {
-    case 'SET_FILTER':
-      return action.filter;
-    default: return state;
-  }
-}
