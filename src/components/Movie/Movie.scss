@@ -1,33 +1,41 @@
 .Movie {
-  width: 30%;
-  border: 1px solid white;
   margin: 10px;
-
-  // z-index: -1;
-  .popup {
-    height: 50%;
-    width: 50%;
-    z-index: 1;
-    position: absolute;
-    left: 200px;
-    top: 100px;
-    border-radius: 25px;
-    background: rgba(0, 0, 0, .5)
-  }
-
-}
-
-
-
-.movie-title {
   color: #ECEBEE;
+
+  .movie-poster {
+    height: 500px;
+  }
 }
 
-.movie-poster {
-  height: 300px;
+.popup {
+  z-index: 1;
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.83);
+  color: #ECEBEE;
+
+  .close-popup {
+    color: #ECEBEE;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: right;
+  }
 }
+
+.movie-release,
+.movie-description,
+.movie-vote {
+  font-size: 18px;
+}
+
 
 .favorite-btn {
   display: block;
   margin: auto;
+  position: relative;
+  top: -91.5%;
+  left: 42%;
+  font-size: 34px;
 }

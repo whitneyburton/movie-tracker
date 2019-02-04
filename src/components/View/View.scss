@@ -1,6 +1,7 @@
 .View {
-  background: #0B161B;
-  width: 90%;
+  background: #0f171e;
+  width: 80%;
+  height: 100vh;
   position: relative;
 }
 
@@ -9,12 +10,12 @@
 }
 
 .popup {
-  height: 50%;
-  width: 50%;
+  height: 54%;
+  width: 80%;
   z-index: 1;
   position: absolute;
-  left: 200px;
-  top: 100px;
+  left: 4%;
+  top: 10%;
   border-radius: 25px;
   background: rgba(0, 0, 0, .5)
 }

@@ -5,10 +5,14 @@ import './Nav.scss'
 const Nav = () => {
   return (
     <nav className='Nav'>
-      <h1 className='movie-tracker-title'>MOVIE TRACKER</h1>
-      <NavLink exact to='/' activeStyle={{ color: 'red' }} name='recent'>Recent</NavLink>
-      <NavLink exact to='/favorites' activeStyle={{ color: 'red' }} name='favorites'>Favorite Movies</NavLink>
-      <NavLink exact to='/popular'  activeStyle={{ color: 'red' }} name='popular'>Popular Movies</NavLink>
+      <h1 className='movie-tracker-title'>Movie <span>Tracker</span></h1>
+      <div className='nav-border'>
+        <div className='nav-options'>
+          <p className='browse'>SORT BY:</p>
+          <NavLink exact to='/' activeStyle={{ color: '#0CD0FC' }} name='recent'>RECENT</NavLink>
+          <NavLink exact to='/favorites' activeStyle={{ color: '#0CD0FC' }} name='favorites'>FAVORITES</NavLink>
+        </div>
+      </div>
     </nav>
   )
 }
