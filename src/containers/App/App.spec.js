@@ -5,7 +5,6 @@ import { Route } from 'react-router-dom'
 import { setShouldPromptLogin, setPopup, setMovies } from '../../actions'
 import { getMovies, getData } from '../../api/'
 import { mockMoviesArray } from '../../mockData/movies'
-import CreateUser from '../CreateUser/CreateUser';
 jest.mock('../../actions')
 jest.mock('../../api/')
 
@@ -81,5 +80,4 @@ describe('App', () => {
       expect(dispatchMock).toHaveBeenCalledWith(expected)
     })
   })
-
 })

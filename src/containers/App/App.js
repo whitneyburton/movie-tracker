@@ -12,7 +12,7 @@ export class App extends Component {
 
   componentDidMount = async () => {
     let movies
-    if (localStorage.getItem('movies') === undefined) {
+    if (!localStorage.getItem('movies')) {
       try {
         movies = await getMovies('now_playing')
         for (let movie of movies) {
@@ -20,8 +20,7 @@ export class App extends Component {
           const trailerKeys = await getMovies(path)
           movie.trailer = trailerKeys[0].key
         }
-        localStorage.setItem('movies', JSON.stringify(this.props.movies))
-
+        localStorage.setItem('movies', JSON.stringify(movies))
       } catch (error) {
         console.log('Error getting data')
       }
@@ -52,6 +51,7 @@ export const mapStateToProps = (state) => ({
   canPopup: state.shouldPromptLogin,
   user: state.user
 })
+
 export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
   setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),

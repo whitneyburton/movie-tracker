@@ -16,7 +16,6 @@ export const Profile = (props) => {
     }
   }
 
-
   return (
     <Fragment>
       {!user ?

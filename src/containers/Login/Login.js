@@ -22,6 +22,7 @@ export class Login extends Component {
       [name]: value,
     })
   }
+  
   setUser = async () => {
     const { password, email } = this.state
     const data = await postData('users', { password, email })
@@ -75,10 +76,10 @@ export class Login extends Component {
             onChange={this.handleChange}
             name='password' />
           {error && <h3>{error}</h3>}
-          <Link to='/' onClick={() => this.props.setPopup(false)}>Back</Link>
-          <button className='sign-in link'> Sign In </button>
+          <button className='sign-in link'>Sign In</button>
           <p>New to Movie Tracker?</p>
           <NavLink className='create-user link' to='/create-user'>Create Account</NavLink>
+          <Link className='back-btn' to='/' onClick={() => this.props.setPopup(false)}>Go Back</Link>
         </form>
     )
   }

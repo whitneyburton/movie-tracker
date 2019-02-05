@@ -27,17 +27,10 @@ exports[`Login should match the snapshot 1`] = `
     required={true}
     type="password"
   />
-  <Link
-    onClick={[Function]}
-    replace={false}
-    to="/"
-  >
-    Back
-  </Link>
   <button
     className="sign-in link"
   >
-     Sign In 
+    Sign In
   </button>
   <p>
     New to Movie Tracker?
@@ -50,5 +43,13 @@ exports[`Login should match the snapshot 1`] = `
   >
     Create Account
   </NavLink>
+  <Link
+    className="back-btn"
+    onClick={[Function]}
+    replace={false}
+    to="/"
+  >
+    Go Back
+  </Link>
 </form>
 `;
