@@ -61,22 +61,18 @@ describe('Movie', () => {
   })
 
   it('should call setFavoritesMock when favorite button is clicked', () => {
-    // wrapper.find('.favorite-btn').simulate('click')
     expect(setFavoritesMock).toHaveBeenCalledTimes(1)
   })
 
   it('should call getData when favorite button is clicked', () => {
-    // wrapper.find('.favorite-btn').simulate('click')
     expect(getData).toHaveBeenCalledTimes(1)
   })
 
   it('should call getData when favorite button is clicked', () => {
-    // wrapper.find('.favorite-btn').simulate('click')
     expect(postData).toHaveBeenCalledTimes(1)
   })
 
   it('should call getData when favorite button is clicked', () => {
-    // wrapper.find('.favorite-btn').simulate('click')
     expect(deleteData).toHaveBeenCalledTimes(0)
   })
 })
