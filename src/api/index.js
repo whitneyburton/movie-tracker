@@ -27,7 +27,7 @@ export const deleteData = async (path, data) => {
 
 export const getData = async (path) => {
   const response = await fetch(`${dbUrl}${path}`)
-  if (!response.ok) throw new Error(`${response.statusText}`)
+  if (!response.ok) throw new Error(`Could not get Data`)
   const unfilteredData = await response.json()
   return unfilteredData.data
 }

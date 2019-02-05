@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { postData } from '../../api'
+import PropTypes from 'prop-types'
 import './CreateUser.scss'
 
 class CreateUser extends Component {
@@ -81,3 +82,7 @@ class CreateUser extends Component {
 }
 
 export default CreateUser;
+
+CreateUser.propTypes = {
+  setPopup: PropTypes.func,
+}

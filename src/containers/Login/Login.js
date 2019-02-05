@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { setMovies, setUser, setFavorites, setShouldPromptLogin, setPopup } from '../../actions'
 import './Login.scss'
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super()
     this.state = {
@@ -30,7 +30,7 @@ class Login extends Component {
     return id;
   }
 
-  setFavorites = async (userID) => {
+  setUserFavorites = async (userID) => {
     const retrieveFavPath = `users/${userID}/favorites`
     const favorites = await getData(retrieveFavPath)
     this.props.setFavorites(favorites, userID)
@@ -38,10 +38,9 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const userID = await this.setUser()
-      this.setFavorites(userID)
+      this.setUserFavorites(userID)
       this.setState({ canLogin: true })
       this.props.setPopup(false)
     } catch (error) {

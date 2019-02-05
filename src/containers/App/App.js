@@ -5,6 +5,7 @@ import { getMovies } from '../../api/'
 import { setMovies, setShouldPromptLogin, setPopup } from '../../actions'
 import { View, CreateAccountPrompt } from '../../components/'
 import { Login, CreateUser } from '../../containers/'
+import PropTypes from 'prop-types'
 import '../../styles/main.scss'
 
 export class App extends Component {
@@ -51,3 +52,12 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+
+App.propTypes = {
+  movies: PropTypes.array,
+  canPopup: PropTypes.bool,
+  user: PropTypes.object,
+  setMovies: PropTypes.func,
+  setShouldPromptLogin: PropTypes.func,
+  setPopup: PropTypes.func,
+}

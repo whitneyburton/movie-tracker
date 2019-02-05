@@ -62,7 +62,7 @@ describe('api should return error if not ok', () => {
 
   it('should throw an error if everything is not ok', async () => {
     const response = await window.fetch
-    const expectedError = Error(`${response.statusText}`);
+    const expectedError = Error(`Could not get Data`);
     await expect(api.getData(mockPath)).rejects.toEqual(expectedError)
   })
 })

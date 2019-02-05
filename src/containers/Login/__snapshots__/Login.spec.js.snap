@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should match the snapshot 1`] = `
+<form
+  className="Login"
+  onSubmit={[Function]}
+>
+  <h1>
+    Movie Tracker
+  </h1>
+  <h3>
+    Welcome back!
+  </h3>
+  <input
+    className="user-input"
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    required={true}
+    type="email"
+  />
+  <input
+    className="user-input"
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    required={true}
+    type="password"
+  />
+  <Link
+    onClick={[Function]}
+    replace={false}
+    to="/"
+  >
+    Back
+  </Link>
+  <button
+    className="sign-in link"
+  >
+     Sign In 
+  </button>
+  <p>
+    New to Movie Tracker?
+  </p>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="create-user link"
+    to="/create-user"
+  >
+    Create Account
+  </NavLink>
+</form>
+`;
