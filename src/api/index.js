@@ -34,7 +34,6 @@ export const getData = async (path) => {
 
 export const getMovies = async (path) => {
   const response = await fetch(`${moviesUrl}${path}${apiKey}`)
-  console.log(response)
   if (!response.ok) throw new Error('Error')
   const unfilteredMovies = await response.json()
   return unfilteredMovies.results
