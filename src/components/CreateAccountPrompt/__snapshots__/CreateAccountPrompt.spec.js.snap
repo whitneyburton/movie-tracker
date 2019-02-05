@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateAccountPrompt should match snapshot 1`] = `
+<div
+  className="CreateAccountPrompt"
+>
+  <p>
+    Would you like to create an account?
+  </p>
+  <Link
+    onClick={[Function]}
+    replace={false}
+    to="/create-user"
+  >
+     YUSH
+  </Link>
+  <button
+    className="test"
+    onClick={[Function]}
+  >
+    NAH
+  </button>
+</div>
+`;
