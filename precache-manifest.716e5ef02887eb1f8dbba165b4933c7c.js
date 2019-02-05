@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "09c739e1b40ec7d1b7df",
-    "url": "/The_Best_Movies/static/css/main.03fdf525.chunk.css"
+    "revision": "bc858691a005bbf7a44b",
+    "url": "/The_Best_Movies/static/css/main.400b75de.chunk.css"
   },
   {
-    "revision": "09c739e1b40ec7d1b7df",
-    "url": "/The_Best_Movies/static/js/main.09c739e1.chunk.js"
+    "revision": "bc858691a005bbf7a44b",
+    "url": "/The_Best_Movies/static/js/main.bc858691.chunk.js"
   },
   {
     "revision": "ad5052115fc3d8cd953d",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/The_Best_Movies/static/js/runtime~main.9eac37de.js"
   },
   {
-    "revision": "103c304ba3e5783a9ca83e365d2755a0",
+    "revision": "5f61ac49d7d652899996e7611c1a8441",
     "url": "/The_Best_Movies/index.html"
   }
 ];
