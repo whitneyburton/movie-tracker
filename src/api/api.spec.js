@@ -38,7 +38,7 @@ describe('api with succesfull return', () => {
 
 
 
-describe('should return error if not ok', () => {
+describe('api should return error if not ok', () => {
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       status: 401,
@@ -62,7 +62,7 @@ describe('should return error if not ok', () => {
 
   it('should throw an error if everything is not ok', async () => {
     const response = await window.fetch
-    const expectedError = Error(`${response.statusText}`);
+    const expectedError = Error(`Could not get Data`);
     await expect(api.getData(mockPath)).rejects.toEqual(expectedError)
   })
 })
@@ -93,8 +93,7 @@ describe('getMovies', () => {
       status: 401,
       ok: false,
     }))
-    const response = await window.fetch
-    const expectedError = Error(`${response.statusText}`);
+    const expectedError = Error(`Could not get Movie`);
     await expect(api.getMovies(mockPath)).rejects.toEqual(expectedError)
   })
 })

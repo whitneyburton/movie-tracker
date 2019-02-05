@@ -5,7 +5,7 @@ import { setUser, setMovies, setPopup } from '../../actions'
 import { getMovies } from '../../api/'
 import './Profile.scss'
 
-const Profile = (props) => {
+export const Profile = (props) => {
   const { user } = props
   const logout = async () => {
     props.setUser(null)

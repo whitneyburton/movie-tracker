@@ -1,5 +1,6 @@
 import { moviesReducer } from './moviesReducer'
 import * as actions from '../actions/'
+import { mockUserFavesArray, mockUserFavesArrayAfterReducer } from '../mockData/userFavorites'
 
 describe('moviesReducer', () => {
   it('should return the default state', () => {
@@ -20,4 +21,10 @@ describe('moviesReducer', () => {
     const result = moviesReducer(undefined, actions.setMovies(expected))
     expect(result).toEqual(expected)
   })
+
+  it('should pass', () => {
+    const result = moviesReducer(mockUserFavesArray, actions.setFavorites(mockUserFavesArray, 27))
+    expect(result).toEqual(mockUserFavesArrayAfterReducer)
+  })
+
 })

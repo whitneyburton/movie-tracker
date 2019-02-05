@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should pass a test 1`] = `
+<Fragment>
+  <div
+    className="Profile"
+  >
+    <Link
+      className="login-link"
+      onClick={[Function]}
+      replace={false}
+      to="/login"
+    >
+      SIGN IN
+    </Link>
+  </div>
+</Fragment>
+`;

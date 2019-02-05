@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `
+<div
+  className="CreateUser"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <h1
+      className="create-your-account"
+    >
+      Create Your Account
+    </h1>
+    <input
+      className="user-input"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      required={true}
+      type="text"
+    />
+    <input
+      className="user-input"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      required={true}
+      type="email"
+    />
+    <input
+      className="user-input"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      type="password"
+    />
+    <button
+      className="submit-user"
+      type="submit"
+    >
+      Submit
+    </button>
+    <Link
+      onClick={[Function]}
+      replace={false}
+      to="/"
+    >
+      Back
+    </Link>
+  </form>
+</div>
+`;

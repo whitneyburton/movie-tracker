@@ -5,21 +5,29 @@ import { getMovies } from '../../api/'
 import { setMovies, setShouldPromptLogin, setPopup } from '../../actions'
 import { View, CreateAccountPrompt } from '../../components/'
 import { Login, CreateUser } from '../../containers/'
+import PropTypes from 'prop-types'
 import '../../styles/main.scss'
 
 export class App extends Component {
 
   componentDidMount = async () => {
     let movies
-    try {
-      movies = await getMovies('now_playing')
-      await movies.forEach(async (movie) => {
-        const path = movie.id + '/videos'
-        const trailerKeys = await getMovies(path)
-        movie.trailer = trailerKeys[0].key
-      })
-    } catch (error) {
-      console.log('Error getting data')
+    if (localStorage.getItem('movies') === undefined) {
+      try {
+        movies = await getMovies('now_playing')
+        for (let movie of movies) {
+          const path = movie.id + '/videos'
+          const trailerKeys = await getMovies(path)
+          movie.trailer = trailerKeys[0].key
+        }
+        localStorage.setItem('movies', JSON.stringify(this.props.movies))
+
+      } catch (error) {
+        console.log('Error getting data')
+      }
+    }
+    else {
+      movies = JSON.parse(localStorage.getItem('movies'))
     }
     this.props.setMovies(movies)
   }
@@ -51,3 +59,12 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+
+App.propTypes = {
+  movies: PropTypes.array,
+  canPopup: PropTypes.bool,
+  user: PropTypes.object,
+  setMovies: PropTypes.func,
+  setShouldPromptLogin: PropTypes.func,
+  setPopup: PropTypes.func,
+}

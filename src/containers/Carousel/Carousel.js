@@ -4,7 +4,7 @@ import { Movie } from '../../components/'
 import { connect } from 'react-redux'
 import './Carousel.scss'
 
-const Carousel = (props) => {
+export const Carousel = (props) => {
   const movieCards = props.movies.map(movie => (
     <Movie
       key={JSON.stringify(movie)}
