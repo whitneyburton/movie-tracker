@@ -3,13 +3,11 @@ const defaultState = []
 export const moviesReducer = (state = defaultState, action) => {
   const { type, id: favID } = action
   switch (type) {
-
     case 'SET_MOVIES':
       return action.movies.map(movie => {
         movie.movie_id = movie.id
         return movie
       })
-
     case 'TOGGLE_FAVORITE':
       return [...state].map(movie => (
         movie.id === favID ?
@@ -17,7 +15,6 @@ export const moviesReducer = (state = defaultState, action) => {
           :
           movie
       ))
-
     case 'SET_FAVORITES':
       return [...state].map(movie => {
         movie.isFavorite = false;
@@ -30,7 +27,6 @@ export const moviesReducer = (state = defaultState, action) => {
         })
         return movie;
       })
-
     default:
       return state
   }
