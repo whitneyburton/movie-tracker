@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should match the snapshot 1`] = `
+<nav
+  className="Nav"
+>
+  <h1
+    className="movie-tracker-title"
+  >
+    Movie 
+    <span>
+      Tracker
+    </span>
+  </h1>
+  <div
+    className="nav-border"
+  >
+    <div
+      className="nav-options"
+    >
+      <p
+        className="browse"
+      >
+        SORT BY:
+      </p>
+      <NavLink
+        activeClassName="active"
+        activeStyle={
+          Object {
+            "color": "#0CD0FC",
+          }
+        }
+        aria-current="page"
+        exact={true}
+        name="recent"
+        to="/"
+      >
+        RECENT
+      </NavLink>
+      <NavLink
+        activeClassName="active"
+        activeStyle={
+          Object {
+            "color": "#0CD0FC",
+          }
+        }
+        aria-current="page"
+        exact={true}
+        name="favorites"
+        to="/favorites"
+      >
+        FAVORITES
+      </NavLink>
+    </div>
+  </div>
+</nav>
+`;

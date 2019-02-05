@@ -5,7 +5,11 @@ import { setShouldPromptLogin, setFavorites, setPopup } from '../../actions'
 import { connect } from 'react-redux'
 import './Movie.scss'
 
-const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPopup }) => {
+export const Movie = (
+  {
+    movie, user, setShouldPromptLogin, setFavorites, isPopup, setPopup
+  }
+) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
   const checkCanFavorite = async () => {
     await setShouldPromptLogin(!user)
@@ -36,21 +40,21 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
   const getTrailer = () => {
     return <iframe width="560" height="315" title={movie.title}
       src={`https://www.youtube.com/embed/${movie.trailer}`}
-      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+      frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen></iframe>
   }
   const _class = isPopup ? 'popup' : 'Movie'
 
   return (
     <div className={_class} >
-      { isPopup && <Fragment>
+      {isPopup && <Fragment>
         <Link className='close-popup' onClick={() => setPopup(false)} to='/'>X</Link>
         <h1 className='movie-title'>{movie.title}</h1>
         <p className='movie-release'>Released: {movie.release_date}</p>
         <p className='movie-description'>{movie.overview}</p>
-        <p className='movie-vote'>Average rating: {movie.vote_average}</p>      
+        <p className='movie-vote'>Average rating: {movie.vote_average}</p>
         {getTrailer()}
-      </Fragment> }
+      </Fragment>}
 
       {!isPopup && getImage()}
 

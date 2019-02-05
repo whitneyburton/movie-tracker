@@ -12,13 +12,13 @@ exports[`CreateAccountPrompt should match snapshot 1`] = `
     replace={false}
     to="/create-user"
   >
-     YUSH
+    YES
   </Link>
   <button
-    className="test"
+    className="no-btn"
     onClick={[Function]}
   >
-    NAH
+    NO
   </button>
 </div>
 `;

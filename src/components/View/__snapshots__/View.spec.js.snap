@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should pass 1`] = `
+<div
+  className="Home"
+>
+  <Nav />
+  <section
+    className="View"
+  >
+    <Route
+      component={[Function]}
+      path="/"
+    />
+    <Route
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      path="/movies/:id"
+      render={[Function]}
+    />
+  </section>
+</div>
+`;
