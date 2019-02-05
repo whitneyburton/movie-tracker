@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import './Movie.scss'
 
 const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPopup }) => {
-  console.log({movie})
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
   const checkCanFavorite = async () => {
     await setShouldPromptLogin(!user)
@@ -35,7 +34,6 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
     </Link>
   }
   const getTrailer = () => {
-
     return <iframe width="560" height="315" title={movie.title}
       src={`https://www.youtube.com/embed/${movie.trailer}`}
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -45,7 +43,7 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
 
   return (
     <div className={_class} >
-      {isPopup && <Fragment>
+      { isPopup && <Fragment>
         <Link className='close-popup' onClick={() => setPopup(false)} to='/'>X</Link>
         <h1 className='movie-title'>{movie.title}</h1>
         <p className='movie-release'>Released: {movie.release_date}</p>
@@ -53,7 +51,6 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
         <p className='movie-vote'>Average rating: {movie.vote_average}</p>      
         {getTrailer()}
       </Fragment> }
-        
 
       {!isPopup && getImage()}
 

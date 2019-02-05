@@ -9,7 +9,11 @@ const Profile = (props) => {
   const { user } = props
   const logout = async () => {
     props.setUser(null)
-    props.setMovies(await getMovies('now_playing'))
+    try {
+      props.setMovies(await getMovies('now_playing'))
+    } catch (error) {
+      console.log('Error fetching data')
+    }
   }
 
 
