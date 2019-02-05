@@ -10,7 +10,7 @@ const Carousel = (props) => {
       key={JSON.stringify(movie)}
       movie={movie} />))
   const favMovieCards = movieCards.filter(movieCard => movieCard.props.movie.isFavorite)
-  const hasNoFavs = !favMovieCards.length && <h1 style={{ color: 'white' }}>You need to favorite some damn movies.</h1>
+  const hasNoFavs = !favMovieCards.length && <h1 className='no-faves-notice'>You have no favorites... yet!</h1>
   const _class = props.isPopup ? 'Carousel blur' : 'Carousel'
 
   return (
@@ -19,13 +19,15 @@ const Carousel = (props) => {
         <Switch>
           <Route path='/favorites' render={() => (
             <Fragment>
-              <h2>Favorite Movies</h2>
-              {(hasNoFavs || favMovieCards)}</Fragment>)} />
+              <h2 className='favorites-title'>Favorite Movies</h2>
+              <div className='movies-container'>{(hasNoFavs || favMovieCards)}</div>
+            </Fragment>)} />
 
           <Route path='/' render={() => (
             <Fragment>
-              <h2>Recent Movies</h2>
-              {movieCards}</Fragment>)} />
+              <h2 className='recents-title'>Recent Movies</h2>
+              <div className='movies-container'>{movieCards}</div>
+            </Fragment>)} />
         </Switch>
       </section>
     </Fragment>

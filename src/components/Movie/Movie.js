@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { postData, getData, deleteData } from '../../api'
 import { setShouldPromptLogin, setFavorites, setPopup } from '../../actions'
@@ -18,7 +18,6 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
           await postData(pathToAddFav, movie) :
           await deleteData(pathToDeleteFav, movie)
         const favorites = await getData(pathToGetFav)
-        console.log(favorites, user)
         setFavorites(favorites, user.id)
       } catch (error) {
         console.log(error)
@@ -35,23 +34,27 @@ const Movie = ({ movie, user, setShouldPromptLogin, setFavorites, isPopup, setPo
     </Link>
   }
   const getTrailer = () => {
-
     return <iframe width="560" height="315" title={movie.title}
       src={`https://www.youtube.com/embed/${movie.trailer}`}
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
   }
   const _class = isPopup ? 'popup' : 'Movie'
+
   return (
     <div className={_class} >
-      {isPopup && <Link onClick={() => setPopup(false)} to='/'>x</Link>}
-      {isPopup && <h1 className='movie-title'>{movie.title}</h1>}
-      {isPopup && <p className='movie-title'>{movie.release_date}</p>}
-      {isPopup && getTrailer()}
+      { isPopup && <Fragment>
+        <Link className='close-popup' onClick={() => setPopup(false)} to='/'>X</Link>
+        <h1 className='movie-title'>{movie.title}</h1>
+        <p className='movie-release'>Released: {movie.release_date}</p>
+        <p className='movie-description'>{movie.overview}</p>
+        <p className='movie-vote'>Average rating: {movie.vote_average}</p>      
+        {getTrailer()}
+      </Fragment> }
 
       {!isPopup && getImage()}
 
-      <span className='favorite-btn' onClick={() => checkCanFavorite()}>{movie.isFavorite ? '⭐' : '☆'}</span>
+      <span className='favorite-btn' onClick={() => checkCanFavorite()}>{movie.isFavorite ? '⭐️' : '☆'}</span>
     </div>
   )
 }
