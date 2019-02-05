@@ -1,7 +1,6 @@
 import React from 'react'
 import { App } from './App'
 import { shallow } from 'enzyme'
-import { fetchMovies } from './App'
 import { movies } from '../../mockData/movies'
 import * as actions from '../../actions/'
 

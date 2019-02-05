@@ -8,7 +8,7 @@ import { Login, CreateUser } from '../../containers/'
 import '../../styles/main.scss'
 
 export class App extends Component {
-
+  
   componentDidMount = async () => {
     let movies
     try {
