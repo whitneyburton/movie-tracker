@@ -1,18 +1,42 @@
 .CreateUser {
-  color: whitesmoke;
+  display: flex;
   height: 50%;
-  width: 50%;
+  width: 72%;
   z-index: 1;
   position: absolute;
-  left: 200px;
-  top: 100px;
-  border-radius: 25px;
-  background: rgba(0, 0, 0, .5);
+  left: 22%;
+  top: 10%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ECEBEE;
+  padding: 10px 30px 20px 40px;
+
+  .create-your-account {
+    color: #0CD0FC;
+  }
+  
+  form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
 
   .user-input {
     font-size: 14px;
     border-radius: 5px;
     padding: 6px;
     margin: 10px;
+  }
+
+  .submit-user {
+    width: 30%;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px auto;
+  }
+
+  a {
+    color: #0CD0FC;
   }
 }

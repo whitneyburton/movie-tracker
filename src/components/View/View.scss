@@ -1,20 +1,10 @@
 .View {
-  background: #0B161B;
-  width: 90%;
+  background: #0f171e;
+  width: 80%;
+  height: 100vh;
   position: relative;
 }
 
 .Home {
   display: flex;
-}
-
-.popup {
-  height: 50%;
-  width: 50%;
-  z-index: 1;
-  position: absolute;
-  left: 200px;
-  top: 100px;
-  border-radius: 25px;
-  background: rgba(0, 0, 0, .5)
 }

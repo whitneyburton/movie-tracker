@@ -1,12 +1,14 @@
 .Login {
   height: 50%;
-  width: 50%;
+  width: 72%;
   z-index: 1;
   position: absolute;
-  left: 200px;
-  top: 100px;
-  border-radius: 25px;
-  background: rgba(0, 0, 0, .5);
+  left: 22%;
+  top: 10%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ECEBEE;
+  padding: 30px;
 
   p,
   h3 {
@@ -14,6 +16,7 @@
   }
 
   h1 {
+    font-family: 'Pacifico', sans-serif;
     color: whitesmoke;
     align-self: center;
     grid-area: title;
@@ -23,7 +26,7 @@
 
   .link {
     margin: 10px auto;
-    width: 50%;
+    width: 36%;
     background: whitesmoke;
     border-radius: 25px;
     display: grid;

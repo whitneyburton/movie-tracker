@@ -1,7 +1,23 @@
 .Carousel {
   display: flex;
-  overflow: scroll;
+  flex-direction: column;
+  padding: 6% 0% 0% 5%;
+  color:#ECEBEE;
+  
+  .favorites-title,
+  .recents-title {
+    display: inline-block;
+    text-align: left;
+    padding-bottom: 2%;
+  }
+  
+  .movies-container {
+    display: flex;
+    overflow: scroll;
+  }
 
+  .no-faves-notice {
+  }
 }
 
 .blur {

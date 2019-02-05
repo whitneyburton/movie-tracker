@@ -10,13 +10,17 @@ import '../../styles/main.scss'
 export class App extends Component {
 
   componentDidMount = async () => {
-    let movies = await getMovies('now_playing')
-    await movies.forEach(async (movie) => {
-      const path = movie.id + '/videos'
-      const trailerKeys = await getMovies(path)
-      movie.trailer = trailerKeys[0].key
-    })
-
+    let movies
+    try {
+      movies = await getMovies('now_playing')
+      await movies.forEach(async (movie) => {
+        const path = movie.id + '/videos'
+        const trailerKeys = await getMovies(path)
+        movie.trailer = trailerKeys[0].key
+      })
+    } catch (error) {
+      console.log('Error getting data')
+    }
     this.props.setMovies(movies)
   }
 

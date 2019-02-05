@@ -19,9 +19,6 @@ const View = ({ movies }) => {
       <section className='View'>
         <Route path='/' component={Profile} />
         <Route path='/' render={({ location }) => <Carousel location={location} />} />
-        <Route path='/' render={({ location }) => (
-          <Carousel location={location} />
-        )} />
         <Route path='/movies/:id' render={({ match }) => findClickedCard(match)} />
       </section>
     </div>

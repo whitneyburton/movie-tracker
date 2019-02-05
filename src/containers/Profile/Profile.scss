@@ -1,3 +1,40 @@
-.Profile{
-  color:whitesmoke;
+.Profile {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2% 4% 0% 0%;
+  font-weight: 600;
+
+  .login-link {
+    letter-spacing: 1px;
+    color: #55E4F5;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-bottom: 2px solid #55E4F5;
+      cursor: pointer;
+    }
+  }
+  
+  .user-name {
+    color:#ECEBEE;
+    font-size: 17px;
+    margin-right: 14px;
+  }
+
+  .logout-btn {
+    letter-spacing: 1px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #55E4F5;
+    font-weight: bold;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-bottom: 2px solid #55E4F5;
+      cursor: pointer;
+    }
+  }
 }
