@@ -3,7 +3,7 @@ import apiKey from './movie_api_key'
 // const dbUrl = 'http://localhost:3000/api/'
 const dbUrl = 'https://falsemotive.io/api/'
 const moviesUrl = 'https://api.themoviedb.org/3/movie/'
-const options = (method, data) => ({
+export const options = (method, data) => ({
   method,
   headers: {
     'Content-Type': 'application/json',
@@ -13,14 +13,14 @@ const options = (method, data) => ({
 
 export const postData = async (path = '', data) => {
   const response = await fetch(`${dbUrl}${path}`, options('POST', data))
-  if (!response.ok) throw new Error(`${response.statusText}`)
+  if (!response.ok) throw new Error(`Could not post`)
   const unfilteredData = await response.json()
   return unfilteredData.data
 }
 
 export const deleteData = async (path = '', data) => {
   const response = await fetch(`${dbUrl}${path}`, options('DELETE', data))
-  if (!response.ok) throw new Error(`${response.statusText}`)
+  if (!response.ok) throw new Error(`Could not delete`)
   const unfilteredData = await response.json()
   return unfilteredData.results
 }
