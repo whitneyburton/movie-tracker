@@ -50,10 +50,14 @@ export const Movie = (
       {isPopup && <Fragment>
         <Link className='close-popup' onClick={() => setPopup(false)} to='/'>X</Link>
         <h1 className='movie-title'>{movie.title}</h1>
+        <hr/>
         <p className='movie-release'>Released: {movie.release_date}</p>
-        <p className='movie-description'>{movie.overview}</p>
-        <p className='movie-vote'>Average rating: {movie.vote_average}</p>
+        <hr/>
         {getTrailer()}
+        <hr/>
+        <p className='movie-description'>{movie.overview}</p>
+        <hr/>
+        <p className='movie-vote'>Average rating: {movie.vote_average}</p>
       </Fragment>}
 
       {!isPopup && getImage()}

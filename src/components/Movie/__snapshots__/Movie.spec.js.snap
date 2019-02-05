@@ -15,19 +15,13 @@ exports[`Movie should pass snapshot test 1`] = `
   <h1
     className="movie-title"
   />
+  <hr />
   <p
     className="movie-release"
   >
     Released: 
   </p>
-  <p
-    className="movie-description"
-  />
-  <p
-    className="movie-vote"
-  >
-    Average rating: 
-  </p>
+  <hr />
   <iframe
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen={true}
@@ -36,6 +30,16 @@ exports[`Movie should pass snapshot test 1`] = `
     src="https://www.youtube.com/embed/undefined"
     width="560"
   />
+  <hr />
+  <p
+    className="movie-description"
+  />
+  <hr />
+  <p
+    className="movie-vote"
+  >
+    Average rating: 
+  </p>
   <span
     className="favorite-btn"
     onClick={[Function]}
