@@ -6,7 +6,14 @@ The Movie Tracker web app utilizes the The Movie Database API to populate all of
 ## Project Goals 
 The goal of Movie Tracker was to implement React, Redux, and Router to make a fully functional front-end application. We also implemented a back end server which allowed us to store users name, email, password, and their favorited movies, as well as utilized localStorage to keep the user signed in on refresh. 
 
-### Issues tracked with Waffle.io:
+## Tested with Jest and Enzyme 
+
+<img src="./public/coverage/badge-statements.svg"/>
+<img src="./public/coverage/badge-lines.svg"/>
+<img src="./public/coverage/badge-functions.svg"/>
+<img src="./public/coverage/badge-branches.svg"/>
+
+## Issues tracked with Waffle.io:
 
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/JustinD85/The_Best_Movies.svg?columns=all)](https://waffle.io/JustinD85/The_Best_Movies)
 
