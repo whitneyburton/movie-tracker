@@ -53,7 +53,6 @@ export class App extends Component {
           setPopup={setPopup}
           setShouldPromptLogin={setShouldPromptLogin} />} />
         <Route path='/' render={() => <View movies={this.props.movies} />} />
-        <Route render={() => <View movies={this.props.movies} />} />
       </div>
     )
   }
