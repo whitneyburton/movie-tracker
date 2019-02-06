@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getMovies } from '../../api/'
-import { setMovies, setShouldPromptLogin, setPopup } from '../../actions'
+import { getMovies, getData } from '../../api/'
+import { setMovies, setShouldPromptLogin, setPopup, setUser, setFavorites } from '../../actions'
 import { View, CreateAccountPrompt } from '../../components/'
 import { Login, CreateUser } from '../../containers/'
 import PropTypes from 'prop-types'
@@ -10,7 +10,20 @@ import '../../styles/main.scss'
 
 export class App extends Component {
 
+  setUserFavorites = async (userID) => {
+    const retrieveFavPath = `users/${userID}/favorites`
+    const favorites = await getData(retrieveFavPath)
+    this.props.setFavorites(favorites, userID)
+    this.props.setPopup(false)
+  }
+  
   componentDidMount = async () => {
+    if (localStorage.getItem('users')) {
+      const { name, id } = JSON.parse(localStorage.getItem('users'))
+      this.props.setUser({ name, id })
+      console.log(id)
+      this.setUserFavorites(id)
+    }
     let movies
     if (!localStorage.getItem('movies')) {
       try {
@@ -41,6 +54,7 @@ export class App extends Component {
           setPopup={setPopup}
           setShouldPromptLogin={setShouldPromptLogin} />} />
         <Route path='/' render={() => <View movies={this.props.movies} />} />
+        <Route render={() => <View movies={this.props.movies} />} />
       </div>
     )
   }
@@ -54,8 +68,11 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
+  setUser: (user) => dispatch(setUser(user)),
   setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
-  setPopup: (bool) => dispatch(setPopup(bool))
+  setPopup: (bool) => dispatch(setPopup(bool)),
+  setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
+
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

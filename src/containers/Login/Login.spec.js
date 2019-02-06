@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { postData, getData } from '../../api'
-import { setMovies, setUser, setFavorites, setShouldPromptLogin, setPopup } from '../../actions'
+import { postData } from '../../api'
+import { setMovies, setShouldPromptLogin, setPopup } from '../../actions'
 import { Login, mapDispatchToProps, mapStateToProps } from './Login'
 jest.mock('../../api')
 
@@ -10,7 +10,6 @@ let setUserMock = jest.fn()
 let setFavoritesMock = jest.fn()
 let setPopupMock = jest.fn()
 let setShouldPromptLoginMock = jest.fn()
-let setMoviesMock = jest.fn()
 window.fetch = jest.fn()
 window.getData = jest.fn()
 

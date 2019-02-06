@@ -22,11 +22,12 @@ export class Login extends Component {
       [name]: value,
     })
   }
-  
+
   setUser = async () => {
     const { password, email } = this.state
     const data = await postData('users', { password, email })
     const { name, id } = data
+    localStorage.setItem('users', JSON.stringify({ name, id }))
     this.props.setUser({ name, id })
     return id;
   }

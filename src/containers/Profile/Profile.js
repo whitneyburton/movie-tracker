@@ -5,12 +5,12 @@ import { setUser, setMovies, setPopup } from '../../actions'
 import { getMovies } from '../../api/'
 import './Profile.scss'
 
-export const Profile = (props) => {
-  const { user } = props
+export const Profile = ({ user, setUser, setMovies, setPopup }) => {
   const logout = async () => {
-    props.setUser(null)
+    setUser(null)
     try {
-      props.setMovies(await getMovies('now_playing'))
+      setMovies(await getMovies('now_playing'))
+      localStorage.removeItem('users')
     } catch (error) {
       console.log('Error fetching data')
     }
@@ -20,7 +20,7 @@ export const Profile = (props) => {
     <Fragment>
       {!user ?
         <div className='Profile'>
-          <Link to='/login' className='login-link' onClick={() => props.setPopup(true)} >SIGN IN</Link>
+          <Link to='/login' className='login-link' onClick={() => setPopup(true)} >SIGN IN</Link>
         </div>
         :
         <div className='Profile'>
