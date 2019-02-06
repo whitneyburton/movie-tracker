@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jest-coverage-badges": "^1.1.2",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -15,7 +16,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "npm test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges",
+    "make-badges": "node_modules/.bin/jest-badges-readme",
+    "make-readme": "npm run test:coverage && npm run make-badges"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +46,11 @@
       "!src/mockData/*.js",
       "src/*/*/*.js",
       "!src/reducers/index.js"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
     ]
   }
 }
