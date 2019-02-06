@@ -2,16 +2,17 @@ import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Movie } from '../../components/'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import './Carousel.scss'
 
-export const Carousel = (props) => {
-  const movieCards = props.movies.map(movie => (
+export const Carousel = ({ movies, isPopup }) => {
+  const movieCards = movies.map(movie => (
     <Movie
       key={JSON.stringify(movie)}
       movie={movie} />))
   const favMovieCards = movieCards.filter(movieCard => movieCard.props.movie.isFavorite)
   const hasNoFavs = !favMovieCards.length && <h1 className='no-faves-notice'>You have no favorites... yet!</h1>
-  const _class = props.isPopup ? 'Carousel blur' : 'Carousel'
+  const _class = isPopup ? 'Carousel blur' : 'Carousel'
 
   return (
     <Fragment>
@@ -40,3 +41,8 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(Carousel)
+
+Carousel.propTypes = {
+  movies: PropTypes.array,
+  isPopup: PropTypes.bool,
+}

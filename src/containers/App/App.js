@@ -21,7 +21,6 @@ export class App extends Component {
     if (localStorage.getItem('users')) {
       const { name, id } = JSON.parse(localStorage.getItem('users'))
       this.props.setUser({ name, id })
-      console.log(id)
       this.setUserFavorites(id)
     }
     let movies

@@ -20,5 +20,8 @@ exports[`App should match the snapshot 1`] = `
     path="/"
     render={[Function]}
   />
+  <Route
+    render={[Function]}
+  />
 </div>
 `;

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Redirect, Link } from 'react-router-dom'
 import { postData, getData } from '../../api'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { setMovies, setUser, setFavorites, setShouldPromptLogin, setPopup } from '../../actions'
 import './Login.scss'
 
@@ -12,7 +13,7 @@ export class Login extends Component {
       email: '',
       password: '',
       error: '',
-      canLogin: false
+      canLogin: false,
     }
   }
 
@@ -52,10 +53,12 @@ export class Login extends Component {
 
     }
   }
+
   componentDidMount = () => {
     this.props.setPopup(true)
     this.props.setShouldPromptLogin(false)
   }
+  
   render() {
     const { canLogin, error } = this.state
 
@@ -99,3 +102,10 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
+Login.propTypes = {
+  setShouldPromptLogin: PropTypes.func,
+  setPopup: PropTypes.func,
+  setFavorites: PropTypes.func,
+  setUser: PropTypes.func,
+}

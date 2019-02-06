@@ -34,7 +34,7 @@ describe('App', () => {
   })
 
   it('should render 4 routes', () => {
-    expect(wrapper.find(Route).length).toBe(4)
+    expect(wrapper.find(Route).length).toBe(5)
   })
 
 

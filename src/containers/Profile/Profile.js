@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser, setMovies, setPopup } from '../../actions'
 import { getMovies } from '../../api/'
+import PropTypes from 'prop-types'
 import './Profile.scss'
 
 export const Profile = ({ user, setUser, setMovies, setPopup }) => {
@@ -42,3 +43,10 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+
+Profile.propTypes = {
+  setUser: PropTypes.func,
+  setMovies: PropTypes.func,
+  setPopup: PropTypes.func,
+  user: PropTypes.object,
+}
