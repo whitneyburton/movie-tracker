@@ -22,9 +22,8 @@ describe('moviesReducer', () => {
     expect(result).toEqual(expected)
   })
 
-  it('should pass', () => {
+  it('should return an array of user favorites', () => {
     const result = moviesReducer(mockUserFavesArray, actions.setFavorites(mockUserFavesArray, 27))
     expect(result).toEqual(mockUserFavesArrayAfterReducer)
   })
-
 })

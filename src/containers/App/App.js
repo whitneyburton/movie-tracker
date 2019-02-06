@@ -23,6 +23,7 @@ export class App extends Component {
       this.props.setUser({ name, id })
       this.setUserFavorites(id)
     }
+    
     let movies
     if (!localStorage.getItem('movies')) {
       try {

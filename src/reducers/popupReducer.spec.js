@@ -1,14 +1,15 @@
 import { popupReducer } from './popupReducer'
 
-
-it('should pass a test', () => {
-  expect(
-    popupReducer(undefined, { type: 'SET_POPUP', bool: true }))
-    .toBe(true)
-})
-
-it('should pass a test', () => {
-  expect(
-    popupReducer(undefined, { type: '', bool: true }))
-    .toBe(false)
+describe('popupReducer', () => {
+  it('should return default of true if passed true', () => {
+    expect(
+      popupReducer(undefined, { type: 'SET_POPUP', bool: true }))
+      .toBe(true)
+  })
+  
+  it('should return false if there if passed false', () => {
+    expect(
+      popupReducer(undefined, { type: 'SET_POPUP', bool: false }))
+      .toBe(false)
+  })
 })
