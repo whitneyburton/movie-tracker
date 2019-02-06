@@ -22,8 +22,8 @@ export const setUser = (user) => ({
 })
 
 // Login key
-export const setShouldPromptLogin = (bool) => ({
-  type: 'SET_SHOULD_PROMPT_LOGIN',
+export const setLoginPrompt = (bool) => ({
+  type: 'SET_LOGIN_PROMPT',
   bool,
 })
 

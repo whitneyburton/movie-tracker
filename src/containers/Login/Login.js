@@ -3,7 +3,7 @@ import { NavLink, Redirect, Link } from 'react-router-dom'
 import { postData, getData } from '../../api'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { setMovies, setUser, setFavorites, setShouldPromptLogin, setPopup } from '../../actions'
+import { setMovies, setUser, setFavorites, setLoginPrompt, setPopup } from '../../actions'
 import './Login.scss'
 
 export class Login extends Component {
@@ -56,9 +56,9 @@ export class Login extends Component {
 
   componentDidMount = () => {
     this.props.setPopup(true)
-    this.props.setShouldPromptLogin(false)
+    this.props.setLoginPrompt(false)
   }
-  
+
   render() {
     const { canLogin, error } = this.state
 
@@ -97,14 +97,14 @@ export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
   setUser: (user) => dispatch(setUser(user)),
   setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
-  setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
+  setLoginPrompt: (bool) => dispatch(setLoginPrompt(bool)),
   setPopup: (bool) => dispatch(setPopup(bool)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
 Login.propTypes = {
-  setShouldPromptLogin: PropTypes.func,
+  setLoginPrompt: PropTypes.func,
   setPopup: PropTypes.func,
   setFavorites: PropTypes.func,
   setUser: PropTypes.func,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { postData } from '../../api'
-import { setMovies, setShouldPromptLogin, setPopup } from '../../actions'
+import { setMovies, setLoginPrompt, setPopup } from '../../actions'
 import { Login, mapDispatchToProps, mapStateToProps } from './Login'
 jest.mock('../../api')
 
@@ -9,7 +9,7 @@ let wrapper
 let setUserMock = jest.fn()
 let setFavoritesMock = jest.fn()
 let setPopupMock = jest.fn()
-let setShouldPromptLoginMock = jest.fn()
+let setLoginPromptMock = jest.fn()
 window.fetch = jest.fn()
 window.getData = jest.fn()
 
@@ -21,7 +21,7 @@ describe('Login', () => {
       setUser={setUserMock}
       setFavorites={setFavoritesMock}
       setPopup={setPopupMock}
-      setShouldPromptLogin={setShouldPromptLoginMock}
+      setLoginPrompt={setLoginPromptMock}
       setMovies={setMovies}
     />)
     postData.mockReturnValue({name:'johnny',id:1})
@@ -73,9 +73,9 @@ describe('Login', () => {
       expect(mockDispatch).toHaveBeenCalledWith(expected)
     })
 
-    it('should call dispatch setShouldPromptLogin is called ', () => {
-      const expected = setShouldPromptLogin(true)
-      props.setShouldPromptLogin(true)
+    it('should call dispatch setLoginPrompt is called ', () => {
+      const expected = setLoginPrompt(true)
+      props.setLoginPrompt(true)
       expect(mockDispatch).toHaveBeenCalledWith(expected)
     })
 

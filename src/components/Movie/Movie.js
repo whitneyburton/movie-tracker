@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { postData, getData, deleteData } from '../../api'
-import { setShouldPromptLogin, setFavorites, setPopup } from '../../actions'
+import { setLoginPrompt, setFavorites, setPopup } from '../../actions'
 import { connect } from 'react-redux'
 import './Movie.scss'
 
 export const Movie = (
   {
-    movie, user, setShouldPromptLogin, setFavorites, isPopup, setPopup
+    movie, user, setLoginPrompt, setFavorites, isPopup, setPopup
   }
 ) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w500'
   const checkCanFavorite = async () => {
-    await setShouldPromptLogin(!user)
+    await setLoginPrompt(!user)
     if (user) {
       const pathToAddFav = '/users/favorites/new'
       const pathToGetFav = `users/${user.id}/favorites`
@@ -61,8 +61,8 @@ export const Movie = (
       </Fragment>}
 
       {!isPopup && getImage()}
-
       <span className='favorite-btn' onClick={() => checkCanFavorite()}>{movie.isFavorite ? '⭐️' : '☆'}</span>
+
     </div>
   )
 }
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
-  setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
+  setLoginPrompt: (bool) => dispatch(setLoginPrompt(bool)),
   setPopup: (bool) => dispatch(setPopup(bool)),
 })
 

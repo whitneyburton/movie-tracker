@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getMovies, getData } from '../../api/'
-import { setMovies, setShouldPromptLogin, setPopup, setUser, setFavorites } from '../../actions'
+import { setMovies, setLoginPrompt, setPopup, setUser, setFavorites } from '../../actions'
 import { View, CreateAccountPrompt } from '../../components/'
 import { Login, CreateUser } from '../../containers/'
 import PropTypes from 'prop-types'
@@ -44,14 +44,14 @@ export class App extends Component {
   }
 
   render() {
-    const { canPopup, setPopup, setShouldPromptLogin } = this.props
+    const { canPopup, setPopup, setLoginPrompt } = this.props
     return (
       <div className="App">
         <Route path='/login' component={Login} />
         <Route path='/create-user' render={() => <CreateUser setPopup={setPopup} />} />
         <Route path='/' render={() => canPopup && <CreateAccountPrompt
           setPopup={setPopup}
-          setShouldPromptLogin={setShouldPromptLogin} />} />
+          setLoginPrompt={setLoginPrompt} />} />
         <Route path='/' render={() => <View movies={this.props.movies} />} />
       </div>
     )
@@ -67,7 +67,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   setMovies: (movies) => dispatch(setMovies(movies)),
   setUser: (user) => dispatch(setUser(user)),
-  setShouldPromptLogin: (bool) => dispatch(setShouldPromptLogin(bool)),
+  setLoginPrompt: (bool) => dispatch(setLoginPrompt(bool)),
   setPopup: (bool) => dispatch(setPopup(bool)),
   setFavorites: (favorites, user_id) => dispatch(setFavorites(favorites, user_id)),
 
@@ -80,6 +80,6 @@ App.propTypes = {
   canPopup: PropTypes.bool,
   user: PropTypes.object,
   setMovies: PropTypes.func,
-  setShouldPromptLogin: PropTypes.func,
+  setLoginPrompt: PropTypes.func,
   setPopup: PropTypes.func,
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { App, mapDispatchToProps, mapStateToProps } from './App'
 import { Route } from 'react-router-dom'
-import { setShouldPromptLogin, setPopup, setMovies } from '../../actions'
+import { setLoginPrompt, setPopup, setMovies } from '../../actions'
 import { getMovies, getData } from '../../api/'
 import { mockMoviesArray } from '../../mockData/movies'
 jest.mock('../../actions')
@@ -18,7 +18,7 @@ describe('App', () => {
       movies={mockMoviesArray}
       canPopup={true}
       setPopup={setPopup}
-      setShouldPromptLogin={setShouldPromptLogin}
+      setLoginPrompt={setLoginPrompt}
       setMovies={setMovies}
     />)
 
@@ -34,7 +34,7 @@ describe('App', () => {
   })
 
   it('should render 4 routes', () => {
-    expect(wrapper.find(Route).length).toBe(5)
+    expect(wrapper.find(Route).length).toBe(4)
   })
 
 
@@ -68,9 +68,9 @@ describe('App', () => {
       expect(dispatchMock).toHaveBeenCalledWith(expected)
     })
 
-    it('should call dispatch setShouldPromptLogin is called ', () => {
-      const expected = setShouldPromptLogin(true)
-      props.setShouldPromptLogin(true)
+    it('should call dispatch setLoginPrompt is called ', () => {
+      const expected = setLoginPrompt(true)
+      props.setLoginPrompt(true)
       expect(dispatchMock).toHaveBeenCalledWith(expected)
     })
 

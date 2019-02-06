@@ -40,10 +40,10 @@ describe('actions', () => {
     })
   })
 
-  describe('setShouldPromptLogin', () => {
-    it('should return an object with a type of SET_SHOULD_PROMPT_LOGIN and a boolean', () => {
-      const expected = { type: 'SET_SHOULD_PROMPT_LOGIN', bool: true }
-      const result = actions.setShouldPromptLogin(true)
+  describe('setLoginPrompt', () => {
+    it('should return an object with a type of SET_LOGIN_PROMPT and a boolean', () => {
+      const expected = { type: 'SET_LOGIN_PROMPT', bool: true }
+      const result = actions.setLoginPrompt(true)
       expect(result).toEqual(expected)
     })
   })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { Movie } from './Movie'
 import { mockMovie } from '../../mockData/movies'
 import { postData, getData, deleteData } from '../../api'
@@ -7,7 +7,7 @@ jest.mock('../../api')
 
 describe('Movie', () => {
   let wrapper
-  let setShouldPromptLoginMock = jest.fn()
+  let setLoginPromptMock = jest.fn()
   let setFavoritesMock = jest.fn()
   let setPopupMock = jest.fn()
 
@@ -17,7 +17,7 @@ describe('Movie', () => {
       <Movie
         movie={mockMovie}
         user={{ name: 'jon', id: 27 }}
-        setShouldPromptLogin={setShouldPromptLoginMock}
+        setLoginPrompt={setLoginPromptMock}
         setFavorites={setFavoritesMock}
         setPopup={setPopupMock}
         isPopup={true}
@@ -45,7 +45,7 @@ describe('Movie', () => {
       <Movie
         movie={mockMovie}
         user={{ name: 'jon', id: 27 }}
-        setShouldPromptLogin={setShouldPromptLoginMock}
+        setLoginPrompt={setLoginPromptMock}
         setFavorites={setFavoritesMock}
         setPopup={setPopupMock}
         isPopup={false}
@@ -57,7 +57,7 @@ describe('Movie', () => {
 
   it('should call setShouldPromptLoginMock when favorite button is clicked', () => {
     wrapper.find('.favorite-btn').simulate('click')
-    expect(setShouldPromptLoginMock).toHaveBeenCalledTimes(1)
+    expect(setLoginPromptMock).toHaveBeenCalledTimes(1)
   })
 
   it('should call setFavoritesMock when favorite button is clicked', () => {
