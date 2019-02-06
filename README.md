@@ -13,7 +13,11 @@ The goal of Movie Tracker was to implement React, Redux, and Router to make a fu
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/JustinD85/The_Best_Movies.svg?columns=all)](https://waffle.io/JustinD85/The_Best_Movies)
 
 ## Tested with Jest and Enzyme
-<img src="./coverage/badge-statements.svg"/>
+
+<img src="./public/coverage/badge-statements.svg"/>
+<img src="./public/coverage/badge-functions.svg"/>
+<img src="./public/coverage/badge-lines.svg"/>
+<img src="./public/coverage/badge-branches.svg"/>
 
 
 ## WireFrames
