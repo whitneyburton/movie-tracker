@@ -39,7 +39,8 @@
       "src/*/*.js",
       "!src/api/movie_api_key.js",
       "!src/mockData/*.js",
-      "src/*/*/*.js"
+      "src/*/*/*.js",
+      "!src/reducers/index.js"
     ]
   }
 }

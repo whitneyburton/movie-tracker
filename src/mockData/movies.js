@@ -1,5 +1,5 @@
 export const mockMovie = {
-    "id": "5a7ee86cc3a368189300b429",
+    "id": "91",
     "iso_639_1": "en",
     "iso_3166_1": "US",
     "key": "2mNMvz85NG8",
@@ -13,7 +13,7 @@ export const mockMoviesResponse = {
     "id": 450465,
     "results": [
         {
-            "id": "5a7ee86cc3a368189300b429",
+            "id": "91",
             "iso_639_1": "en",
             "iso_3166_1": "US",
             "key": "2mNMvz85NG8",
@@ -27,7 +27,7 @@ export const mockMoviesResponse = {
 
 export const mockMoviesArray = [
     {
-        "id": "5a7ee86cc3a368189300b429",
+        "id": "91",
         "iso_639_1": "en",
         "iso_3166_1": "US",
         "key": "2mNMvz85NG8",
