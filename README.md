@@ -3,6 +3,8 @@
 ## About 
 The Movie Tracker web app utilizes the The Movie Database API to populate all of the most recent movies released to theatres near you! A user can create an account so that they can track their favorite movies. When a user clicks on a movie, they'll see more details such as the YouTube trailer, a description, the average rating, and when it was released. 
 
+The back-end repository can be found [here](https://github.com/turingschool-examples/movie-tracker).
+
 ## Project Goals 
 The goal of Movie Tracker was to implement React, Redux, and Router to make a fully functional front-end application. We also implemented a back end server which allowed us to store users name, email, password, and their favorited movies, as well as utilized localStorage to keep the user signed in on refresh. 
 
